@@ -1,0 +1,181 @@
+
+
+PCCOE International Grand Challenge: 2026
+Pune, India
+Theme: AI for Climate Change
+Title: AI-Powered Climate Action Tracker & Policy Alignment Agent for 
+Cities
+Institute:Fr. ConceiciaoRodrigues Institute Of Technology 
+Branch:ComputerScience And Engineering
+Team Members:-
+Ryan D’Souza 
+TusharAgarwal 
+NakulDalal
+NainishGothankar
+Sean Fernandes
+
+Cities Have Climate Plans. But Who Tracks What's Actually 
+Happening?
+Fragmented Data
+Climate evidence spread across disconnected sources with no 
+common structure or tracking standard
+Unverifiable Progress
+Progress against specific actions is difficult to verify 
+independently; self-reported data dominates
+Late Detection
+Implementation gaps identified too late for corrective 
+interventions to be effective
+Passive Dashboards
+Existing tools report data 
+without recommending 
+action or explaining what to 
+do next
+Inaccessible Findings
+Technical climate 
+information remains opaque 
+to citizens and non-
+specialist stakeholders
+The gap between climate planning and verified, actionable 
+progress is the problem we solve.
+
+OUR SOLUTION
+Evidence-to-Action System
+An AI-powered system that tracks city climate commitments, identifies implementation gaps and recommends the next best 
+interventions —grounded in verifiable, cross-source evidence.
+Unified Tracking
+Climate commitments across city plans, reports, satellite data, 
+and sensors —all in one place
+Cross-Validated Evidence
+Evidence verified from multiple independent sources, not just 
+self-reported data
+Automated Gap Detection
+Identifies divergence between planned targets and observed on-
+ground progress in real time
+Citizen-Friendly Insights
+Translates complex technical findings into accessible, 
+understandable language for all stakeholders
+
+WHY OUR IDEA?       
+Our Unique Value Proposition
+We're not just tracking data; we're creating an intelligent system that transforms fragmented climate information into verifiable insights and 
+actionable steps for cities.
+Bridging the Gap
+Connects ambitious climate plans with real-world implementation, 
+overcoming data silos and lack of accountability.
+AI-Driven Verification
+Leverages advanced AI to cross-reference data from diverse sources, 
+ensuring unprecedented accuracy and objectivity in progress reports.
+Actionable Intelligence
+Moves beyond passive reporting to provide proactive 
+recommendations and early warnings, enabling timely corrective 
+interventions.
+Empowering Stakeholders
+Translates complex climate data into accessible formats, fostering 
+transparency and citizen engagement in climate governance.
+
+Five Key Objectives
+A sequential, evidence-driven workflow —each step builds on the last to move from raw data to actionable insight.
+Verify
+Retrieve evidence 
+from independent 
+sources
+Recommend
+Suggest ranked, 
+high-impact 
+interventions
+Track
+Monitor progress 
+on climate actions
+Explain
+Translate findings 
+into citizen-ready 
+insights
+Detect
+Identify gaps vs 
+planned targets
+Every city commitment enters the pipeline at Trackand emerges as an Explained, citizen-ready insight —with every reasoning step preserved and auditable.
+
+System Architecture
+Left-to-right data and reasoning flow —from raw, heterogeneous inputs through AI processing to structured, actionable outputs.
+Outputs
+Climate Engine
+AI Pipeline
+Data Sources
+Technology Stack
+•LLM—reasoning and explanation generation
+•RAG(Retrieval-Augmented Generation) —evidence-grounded responses
+•Modular pipeline—each stage independently replaceable
+Design Principle
+Each module is independently replaceable. Swap a satellite provider, upgrade the LLM, or extend the 
+climate engine —without rebuilding the entire system.
+
+Not Just a Dashboard —An Evidence-to-Action Agent
+Five Key Differentiators
+1
+Real-World Impact
+Helps cities take measurable action against climate change
+2
+Unique AI Approach
+Combines LLM, retrieval, satellite data, and real-time sensors
+3
+Action-Oriented
+Identifies gaps and recommends high-ROI solutions
+4
+Transparency & Trust
+Shows sources behind every score —credible for governments and citizens alike
+Every step in the reasoning chain is preserved and traceable. The system does not just report —it reasons, flags, and proposes next steps grounded in cross-validated evidence.
+
+EXPECTED OUTCOMES & IMPACT
+Built to Drive Measurable Climate Action
+️Tracks City Climate Actions
+Using city plans, reports, satellite data, and real-time sensors for 
+continuous, multi-source monitoring
+Scores Progress
+Across transport, energy access, and informal settlements —with sector-
+specific granularity
+Identifies Gaps
+Recommends high-ROI climate interventions and runs what-if simulations 
+for decision-makers
+Citizen Dashboards
+Transparent, trustworthy, source-attributed insights accessible to all 
+stakeholders —not just experts
+What Makes It Different
+•Only system that combines LLM + RAG + satellite + sensordata in one 
+climate action pipeline
+•Goes beyond tracking —identifies gaps and recommends solutionswith 
+simulated impact
+•Source attribution at every step —credible for governments and citizens
+From fragmented climate data to verified, actionable insight —this is the 
+infrastructure cities need to turn plans into progress.
+
+Driving Climate Action: Our Call to Cities
+The time for verifiable, AI-driven climate action is now.
+Key Takeaways
+Bridge the Gap
+Our system transforms fragmented data into verifiable 
+progress, closing the gap between climate plans and on-ground 
+implementation.
+Actionable Intelligence
+Leverage AI to detect gaps, recommend high-impact 
+interventions, and simulate outcomes for smarter decision-
+making.
+Transparency & Trust
+Build public confidence with source-attributed insights and 
+citizen-friendly dashboards, fostering accountability.
+Next Steps
+•Schedule a detailed demo for your city
+•Discuss a potential pilot program and implementation roadmap
+We are ready to partner with visionary cities to turn climate commitments into measurable, real-world 
+impact.
+Summary
+The Problem
+Climate plans are often fragmented, hard to verify, and difficult to translate into measurable action.
+Our Approach
+We combine AI, RAG, satellite data, and sensors to turn scattered signals into trusted climate 
+intelligence.
+Key Features
+Continuous monitoring, progress scoring, gap detection, intervention recommendations, and citizen 
+dashboards.
+Expected Impact
+Help cities move from commitments to accountable execution with faster, smarter, and more 
+transparent climate action.

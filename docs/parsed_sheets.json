@@ -1,0 +1,1470 @@
+{
+  "Features": [
+    {
+      "rowNum": "1",
+      "cells": [
+        {
+          "ref": "A1",
+          "val": "Feature List"
+        }
+      ]
+    },
+    {
+      "rowNum": "2",
+      "cells": [
+        {
+          "ref": "A2",
+          "val": "Source: AI-Powered Climate Action Tracker deck (Track &gt; Verify &gt; Detect &gt; Recommend &gt; Explain)."
+        }
+      ]
+    },
+    {
+      "rowNum": "3",
+      "cells": [
+        {
+          "ref": "A3",
+          "val": "ID"
+        },
+        {
+          "ref": "B3",
+          "val": "Feature"
+        },
+        {
+          "ref": "C3",
+          "val": "Pipeline stage"
+        },
+        {
+          "ref": "D3",
+          "val": "Description"
+        },
+        {
+          "ref": "E3",
+          "val": "Notes"
+        },
+        {
+          "ref": "F3",
+          "val": "Priority"
+        }
+      ]
+    },
+    {
+      "rowNum": "4",
+      "cells": [
+        {
+          "ref": "A4",
+          "val": "F1"
+        },
+        {
+          "ref": "B4",
+          "val": "Commitment tracker"
+        },
+        {
+          "ref": "C4",
+          "val": "Track"
+        },
+        {
+          "ref": "D4",
+          "val": "Upload/link city climate plans and reports (PDF); extract commitments, e.g. &apos;reduce transport emissions 30% by 2030&apos;"
+        },
+        {
+          "ref": "E4",
+          "val": "Sector tag, target, baseline, deadline, owner department per commitment"
+        },
+        {
+          "ref": "F4",
+          "val": "Must have"
+        }
+      ]
+    },
+    {
+      "rowNum": "5",
+      "cells": [
+        {
+          "ref": "A5",
+          "val": "F2"
+        },
+        {
+          "ref": "B5",
+          "val": "Document ingestion + review"
+        },
+        {
+          "ref": "C5",
+          "val": "Track"
+        },
+        {
+          "ref": "D5",
+          "val": "Admin uploads plans; system shows extracted commitments for confirmation"
+        },
+        {
+          "ref": "E5",
+          "val": "Extraction accuracy depends on document quality"
+        },
+        {
+          "ref": "F5",
+          "val": "Must have"
+        }
+      ]
+    },
+    {
+      "rowNum": "6",
+      "cells": [
+        {
+          "ref": "A6",
+          "val": "F3"
+        },
+        {
+          "ref": "B6",
+          "val": "Multi-source evidence panel"
+        },
+        {
+          "ref": "C6",
+          "val": "Verify"
+        },
+        {
+          "ref": "D6",
+          "val": "Pull evidence from satellite data, sensors and city reports"
+        },
+        {
+          "ref": "E6",
+          "val": "Satellite (green cover, heat, air quality), sensor readings, reports"
+        },
+        {
+          "ref": "F6",
+          "val": "Must have"
+        }
+      ]
+    },
+    {
+      "rowNum": "7",
+      "cells": [
+        {
+          "ref": "A7",
+          "val": "F4"
+        },
+        {
+          "ref": "B7",
+          "val": "Source agreement indicator"
+        },
+        {
+          "ref": "C7",
+          "val": "Verify"
+        },
+        {
+          "ref": "D7",
+          "val": "Show whether independent sources confirm self-reported progress"
+        },
+        {
+          "ref": "E7",
+          "val": "Flags when reported progress differs from independent sources"
+        },
+        {
+          "ref": "F7",
+          "val": "Must have"
+        }
+      ]
+    },
+    {
+      "rowNum": "8",
+      "cells": [
+        {
+          "ref": "A8",
+          "val": "F5"
+        },
+        {
+          "ref": "B8",
+          "val": "Source transparency"
+        },
+        {
+          "ref": "C8",
+          "val": "Verify"
+        },
+        {
+          "ref": "D8",
+          "val": "&apos;View sources&apos; link on every score"
+        },
+        {
+          "ref": "E8",
+          "val": "Core differentiator: transparency and trust"
+        },
+        {
+          "ref": "F8",
+          "val": "Must have"
+        }
+      ]
+    },
+    {
+      "rowNum": "9",
+      "cells": [
+        {
+          "ref": "A9",
+          "val": "F6"
+        },
+        {
+          "ref": "B9",
+          "val": "Progress scoring"
+        },
+        {
+          "ref": "C9",
+          "val": "Detect"
+        },
+        {
+          "ref": "D9",
+          "val": "Progress score per commitment and per sector (planned vs observed)"
+        },
+        {
+          "ref": "E9",
+          "val": "Sector-specific granularity"
+        },
+        {
+          "ref": "F9",
+          "val": "Must have"
+        }
+      ]
+    },
+    {
+      "rowNum": "10",
+      "cells": [
+        {
+          "ref": "A10",
+          "val": "F7"
+        },
+        {
+          "ref": "B10",
+          "val": "Gap detection and alerts"
+        },
+        {
+          "ref": "C10",
+          "val": "Detect"
+        },
+        {
+          "ref": "D10",
+          "val": "Status labels (on track / at risk / off track); alerts when the gap widens"
+        },
+        {
+          "ref": "E10",
+          "val": "Real-time or near-real-time refresh"
+        },
+        {
+          "ref": "F10",
+          "val": "Must have"
+        }
+      ]
+    },
+    {
+      "rowNum": "11",
+      "cells": [
+        {
+          "ref": "A11",
+          "val": "F8"
+        },
+        {
+          "ref": "B11",
+          "val": "Recommendation engine"
+        },
+        {
+          "ref": "C11",
+          "val": "Recommend"
+        },
+        {
+          "ref": "D11",
+          "val": "Ranked next-best interventions scored by impact, cost and ROI"
+        },
+        {
+          "ref": "E11",
+          "val": "Climate engine outputs"
+        },
+        {
+          "ref": "F11",
+          "val": "Should have"
+        }
+      ]
+    },
+    {
+      "rowNum": "12",
+      "cells": [
+        {
+          "ref": "A12",
+          "val": "F9"
+        },
+        {
+          "ref": "B12",
+          "val": "What-if simulator"
+        },
+        {
+          "ref": "C12",
+          "val": "Recommend"
+        },
+        {
+          "ref": "D12",
+          "val": "Sliders (e.g. add 50 e-buses) showing projected emission change and cost"
+        },
+        {
+          "ref": "E12",
+          "val": "Needs documented model assumptions"
+        },
+        {
+          "ref": "F12",
+          "val": "Should have"
+        }
+      ]
+    },
+    {
+      "rowNum": "13",
+      "cells": [
+        {
+          "ref": "A13",
+          "val": "F10"
+        },
+        {
+          "ref": "B13",
+          "val": "Citizen insights"
+        },
+        {
+          "ref": "C13",
+          "val": "Explain"
+        },
+        {
+          "ref": "D13",
+          "val": "Plain-language summary per finding with status badge and sources"
+        },
+        {
+          "ref": "E13",
+          "val": "LLM-generated, grounded in retrieved evidence"
+        },
+        {
+          "ref": "F13",
+          "val": "Must have"
+        }
+      ]
+    },
+    {
+      "rowNum": "14",
+      "cells": [
+        {
+          "ref": "A14",
+          "val": "F11"
+        },
+        {
+          "ref": "B14",
+          "val": "Language toggle"
+        },
+        {
+          "ref": "C14",
+          "val": "Explain"
+        },
+        {
+          "ref": "D14",
+          "val": "Switch citizen view between languages (English, Hindi, Marathi)"
+        },
+        {
+          "ref": "E14",
+          "val": "Nice for accessibility"
+        },
+        {
+          "ref": "F14",
+          "val": "Nice to have"
+        }
+      ]
+    },
+    {
+      "rowNum": "15",
+      "cells": [
+        {
+          "ref": "A15",
+          "val": "F12"
+        },
+        {
+          "ref": "B15",
+          "val": "Cited Q&amp;A chat"
+        },
+        {
+          "ref": "C15",
+          "val": "Explain"
+        },
+        {
+          "ref": "D15",
+          "val": "RAG chat answering citizen questions with source chips"
+        },
+        {
+          "ref": "E15",
+          "val": "Answers must cite plan page / satellite / sensor"
+        },
+        {
+          "ref": "F15",
+          "val": "Must have"
+        }
+      ]
+    },
+    {
+      "rowNum": "16",
+      "cells": [
+        {
+          "ref": "A16",
+          "val": "F13"
+        },
+        {
+          "ref": "B16",
+          "val": "Audit trail"
+        },
+        {
+          "ref": "C16",
+          "val": "Cross-cutting"
+        },
+        {
+          "ref": "D16",
+          "val": "Reasoning log: documents retrieved, data used, how score was computed"
+        },
+        {
+          "ref": "E16",
+          "val": "Every reasoning step preserved and traceable"
+        },
+        {
+          "ref": "F16",
+          "val": "Should have"
+        }
+      ]
+    },
+    {
+      "rowNum": "18",
+      "cells": [
+        {
+          "ref": "A18",
+          "val": "Must-have count"
+        },
+        {
+          "ref": "D18",
+          "val": "9"
+        }
+      ]
+    },
+    {
+      "rowNum": "19",
+      "cells": [
+        {
+          "ref": "A19",
+          "val": "Total features"
+        },
+        {
+          "ref": "D19",
+          "val": "13"
+        }
+      ]
+    }
+  ],
+  "MVP Scope": [
+    {
+      "rowNum": "1",
+      "cells": [
+        {
+          "ref": "A1",
+          "val": "Minimum Prototype Scope"
+        }
+      ]
+    },
+    {
+      "rowNum": "3",
+      "cells": [
+        {
+          "ref": "A3",
+          "val": "Item"
+        },
+        {
+          "ref": "B3",
+          "val": "Scope"
+        },
+        {
+          "ref": "C3",
+          "val": "Comment"
+        }
+      ]
+    },
+    {
+      "rowNum": "4",
+      "cells": [
+        {
+          "ref": "A4",
+          "val": "Cities"
+        },
+        {
+          "ref": "B4",
+          "val": "1 pilot city"
+        },
+        {
+          "ref": "C4",
+          "val": "Keep scope narrow"
+        }
+      ]
+    },
+    {
+      "rowNum": "5",
+      "cells": [
+        {
+          "ref": "A5",
+          "val": "Sectors"
+        },
+        {
+          "ref": "B5",
+          "val": "2 (e.g. transport, energy access)"
+        },
+        {
+          "ref": "C5",
+          "val": "Add informal settlements later"
+        }
+      ]
+    },
+    {
+      "rowNum": "6",
+      "cells": [
+        {
+          "ref": "A6",
+          "val": "Commitments"
+        },
+        {
+          "ref": "B6",
+          "val": "5 to 10"
+        },
+        {
+          "ref": "C6",
+          "val": "Extracted from one city plan"
+        }
+      ]
+    },
+    {
+      "rowNum": "7",
+      "cells": [
+        {
+          "ref": "A7",
+          "val": "Satellite indicator"
+        },
+        {
+          "ref": "B7",
+          "val": "1 (e.g. NO2 or green cover)"
+        },
+        {
+          "ref": "C7",
+          "val": "Sample data acceptable for demo"
+        }
+      ]
+    },
+    {
+      "rowNum": "8",
+      "cells": [
+        {
+          "ref": "A8",
+          "val": "Sensor feed"
+        },
+        {
+          "ref": "B8",
+          "val": "1 (can be sample data)"
+        },
+        {
+          "ref": "C8",
+          "val": "Live integration takes longest"
+        }
+      ]
+    },
+    {
+      "rowNum": "9",
+      "cells": [
+        {
+          "ref": "A9",
+          "val": "AI features"
+        },
+        {
+          "ref": "B9",
+          "val": "Cited Q&amp;A chat + plain-language summaries"
+        },
+        {
+          "ref": "C9",
+          "val": "Core loop first"
+        }
+      ]
+    },
+    {
+      "rowNum": "10",
+      "cells": [
+        {
+          "ref": "A10",
+          "val": "Deferred"
+        },
+        {
+          "ref": "B10",
+          "val": "Language toggle, full evidence explorer, live feeds"
+        }
+      ]
+    }
+  ],
+  "Screens": [
+    {
+      "rowNum": "1",
+      "cells": [
+        {
+          "ref": "A1",
+          "val": "GUI Screens"
+        }
+      ]
+    },
+    {
+      "rowNum": "3",
+      "cells": [
+        {
+          "ref": "A3",
+          "val": "Screen"
+        },
+        {
+          "ref": "B3",
+          "val": "Audience"
+        },
+        {
+          "ref": "C3",
+          "val": "Purpose / contents"
+        },
+        {
+          "ref": "D3",
+          "val": "Status"
+        }
+      ]
+    },
+    {
+      "rowNum": "4",
+      "cells": [
+        {
+          "ref": "A4",
+          "val": "City dashboard"
+        },
+        {
+          "ref": "B4",
+          "val": "Officials"
+        },
+        {
+          "ref": "C4",
+          "val": "Overall score, sector progress, gap alerts, satellite map layer"
+        },
+        {
+          "ref": "D4",
+          "val": "Mockup shown"
+        }
+      ]
+    },
+    {
+      "rowNum": "5",
+      "cells": [
+        {
+          "ref": "A5",
+          "val": "Commitment detail"
+        },
+        {
+          "ref": "B5",
+          "val": "Officials"
+        },
+        {
+          "ref": "C5",
+          "val": "Evidence and sources, recommendations, what-if simulator, reasoning trail"
+        },
+        {
+          "ref": "D5",
+          "val": "Mockup shown"
+        }
+      ]
+    },
+    {
+      "rowNum": "6",
+      "cells": [
+        {
+          "ref": "A6",
+          "val": "Commitments list"
+        },
+        {
+          "ref": "B6",
+          "val": "Officials"
+        },
+        {
+          "ref": "C6",
+          "val": "Table of all extracted commitments with status filters"
+        },
+        {
+          "ref": "D6",
+          "val": "Not mocked"
+        }
+      ]
+    },
+    {
+      "rowNum": "7",
+      "cells": [
+        {
+          "ref": "A7",
+          "val": "Evidence explorer"
+        },
+        {
+          "ref": "B7",
+          "val": "Analysts"
+        },
+        {
+          "ref": "C7",
+          "val": "Raw satellite, sensor and document sources with agreement scores"
+        },
+        {
+          "ref": "D7",
+          "val": "Not mocked"
+        }
+      ]
+    },
+    {
+      "rowNum": "8",
+      "cells": [
+        {
+          "ref": "A8",
+          "val": "Citizen view"
+        },
+        {
+          "ref": "B8",
+          "val": "Public"
+        },
+        {
+          "ref": "C8",
+          "val": "Plain-language insights, language toggle, cited Q&amp;A chat"
+        },
+        {
+          "ref": "D8",
+          "val": "Mockup shown"
+        }
+      ]
+    },
+    {
+      "rowNum": "9",
+      "cells": [
+        {
+          "ref": "A9",
+          "val": "Document upload"
+        },
+        {
+          "ref": "B9",
+          "val": "Admin"
+        },
+        {
+          "ref": "C9",
+          "val": "Upload city plans and confirm extracted commitments"
+        },
+        {
+          "ref": "D9",
+          "val": "Not mocked"
+        }
+      ]
+    }
+  ],
+  "AI Components": [
+    {
+      "rowNum": "1",
+      "cells": [
+        {
+          "ref": "A1",
+          "val": "Where AI Shows Up"
+        }
+      ]
+    },
+    {
+      "rowNum": "3",
+      "cells": [
+        {
+          "ref": "A3",
+          "val": "Component"
+        },
+        {
+          "ref": "B3",
+          "val": "Role in the UI"
+        }
+      ]
+    },
+    {
+      "rowNum": "4",
+      "cells": [
+        {
+          "ref": "A4",
+          "val": "LLM"
+        },
+        {
+          "ref": "B4",
+          "val": "Writes plain-language summaries and gap explanations"
+        }
+      ]
+    },
+    {
+      "rowNum": "5",
+      "cells": [
+        {
+          "ref": "A5",
+          "val": "RAG"
+        },
+        {
+          "ref": "B5",
+          "val": "Powers chat answers and the source chips under each answer"
+        }
+      ]
+    },
+    {
+      "rowNum": "6",
+      "cells": [
+        {
+          "ref": "A6",
+          "val": "Climate engine"
+        },
+        {
+          "ref": "B6",
+          "val": "Produces scores and what-if numbers; screens only display them"
+        }
+      ]
+    },
+    {
+      "rowNum": "7",
+      "cells": [
+        {
+          "ref": "A7",
+          "val": "Modular pipeline"
+        },
+        {
+          "ref": "B7",
+          "val": "Each stage independently replaceable (e.g. swap satellite provider, upgrade LLM)"
+        }
+      ]
+    }
+  ],
+  "Sample Data": [
+    {
+      "rowNum": "1",
+      "cells": [
+        {
+          "ref": "A1",
+          "val": "Sample commitments and gap detection (illustrative data)"
+        },
+        {
+          "ref": "G1",
+          "val": "On track if gap &lt;="
+        },
+        {
+          "ref": "H1",
+          "val": "0.05"
+        }
+      ]
+    },
+    {
+      "rowNum": "2",
+      "cells": [
+        {
+          "ref": "A2",
+          "val": "Blue = editable inputs (illustrative values, not real city data). Verified % = average of satellite and sensor. Thresholds in H1:H2."
+        },
+        {
+          "ref": "G2",
+          "val": "At risk if gap &lt;="
+        },
+        {
+          "ref": "H2",
+          "val": "0.15"
+        }
+      ]
+    },
+    {
+      "rowNum": "4",
+      "cells": [
+        {
+          "ref": "A4",
+          "val": "Commitment"
+        },
+        {
+          "ref": "B4",
+          "val": "Sector"
+        },
+        {
+          "ref": "C4",
+          "val": "Planned progress to date"
+        },
+        {
+          "ref": "D4",
+          "val": "City-reported progress"
+        },
+        {
+          "ref": "E4",
+          "val": "Satellite-observed"
+        },
+        {
+          "ref": "F4",
+          "val": "Sensor-observed"
+        },
+        {
+          "ref": "G4",
+          "val": "Verified (avg)"
+        },
+        {
+          "ref": "H4",
+          "val": "Reporting overstatement"
+        },
+        {
+          "ref": "I4",
+          "val": "Gap vs plan"
+        },
+        {
+          "ref": "J4",
+          "val": "Status"
+        },
+        {
+          "ref": "K4",
+          "val": "Sources agree?"
+        }
+      ]
+    },
+    {
+      "rowNum": "5",
+      "cells": [
+        {
+          "ref": "A5",
+          "val": "Cut transport emissions 30%"
+        },
+        {
+          "ref": "B5",
+          "val": "Transport"
+        },
+        {
+          "ref": "C5",
+          "val": "0.3"
+        },
+        {
+          "ref": "D5",
+          "val": "0.14"
+        },
+        {
+          "ref": "E5",
+          "val": "0.06"
+        },
+        {
+          "ref": "F5",
+          "val": "0.07"
+        },
+        {
+          "ref": "G5",
+          "val": "0.065"
+        },
+        {
+          "ref": "H5",
+          "val": "0.075"
+        },
+        {
+          "ref": "I5",
+          "val": "0.235"
+        },
+        {
+          "ref": "J5",
+          "val": "Off track"
+        },
+        {
+          "ref": "K5",
+          "val": "Yes"
+        }
+      ]
+    },
+    {
+      "rowNum": "6",
+      "cells": [
+        {
+          "ref": "A6",
+          "val": "Electrify 400 buses"
+        },
+        {
+          "ref": "B6",
+          "val": "Transport"
+        },
+        {
+          "ref": "C6",
+          "val": "0.6"
+        },
+        {
+          "ref": "D6",
+          "val": "0.45"
+        },
+        {
+          "ref": "E6",
+          "val": "0.3"
+        },
+        {
+          "ref": "F6",
+          "val": "0.3"
+        },
+        {
+          "ref": "G6",
+          "val": "0.3"
+        },
+        {
+          "ref": "H6",
+          "val": "0.15"
+        },
+        {
+          "ref": "I6",
+          "val": "0.3"
+        },
+        {
+          "ref": "J6",
+          "val": "Off track"
+        },
+        {
+          "ref": "K6",
+          "val": "Yes"
+        }
+      ]
+    },
+    {
+      "rowNum": "7",
+      "cells": [
+        {
+          "ref": "A7",
+          "val": "Rooftop solar uptake"
+        },
+        {
+          "ref": "B7",
+          "val": "Energy access"
+        },
+        {
+          "ref": "C7",
+          "val": "0.5"
+        },
+        {
+          "ref": "D7",
+          "val": "0.42"
+        },
+        {
+          "ref": "E7",
+          "val": "0.38"
+        },
+        {
+          "ref": "F7",
+          "val": "0.4"
+        },
+        {
+          "ref": "G7",
+          "val": "0.39"
+        },
+        {
+          "ref": "H7",
+          "val": "0.03"
+        },
+        {
+          "ref": "I7",
+          "val": "0.11"
+        },
+        {
+          "ref": "J7",
+          "val": "At risk"
+        },
+        {
+          "ref": "K7",
+          "val": "Yes"
+        }
+      ]
+    },
+    {
+      "rowNum": "8",
+      "cells": [
+        {
+          "ref": "A8",
+          "val": "Clean cooking programme"
+        },
+        {
+          "ref": "B8",
+          "val": "Energy access"
+        },
+        {
+          "ref": "C8",
+          "val": "0.55"
+        },
+        {
+          "ref": "D8",
+          "val": "0.5"
+        },
+        {
+          "ref": "E8",
+          "val": "0.48"
+        },
+        {
+          "ref": "F8",
+          "val": "0.47"
+        },
+        {
+          "ref": "G8",
+          "val": "0.475"
+        },
+        {
+          "ref": "H8",
+          "val": "0.025"
+        },
+        {
+          "ref": "I8",
+          "val": "0.0750000000000001"
+        },
+        {
+          "ref": "J8",
+          "val": "At risk"
+        },
+        {
+          "ref": "K8",
+          "val": "Yes"
+        }
+      ]
+    },
+    {
+      "rowNum": "9",
+      "cells": [
+        {
+          "ref": "A9",
+          "val": "Green cover, Ward K-East (+4%)"
+        },
+        {
+          "ref": "B9",
+          "val": "Informal settlements"
+        },
+        {
+          "ref": "C9",
+          "val": "0.5"
+        },
+        {
+          "ref": "D9",
+          "val": "0.5"
+        },
+        {
+          "ref": "E9",
+          "val": "0.12"
+        },
+        {
+          "ref": "F9",
+          "val": "0.15"
+        },
+        {
+          "ref": "G9",
+          "val": "0.135"
+        },
+        {
+          "ref": "H9",
+          "val": "0.365"
+        },
+        {
+          "ref": "I9",
+          "val": "0.365"
+        },
+        {
+          "ref": "J9",
+          "val": "Off track"
+        },
+        {
+          "ref": "K9",
+          "val": "Yes"
+        }
+      ]
+    },
+    {
+      "rowNum": "10",
+      "cells": [
+        {
+          "ref": "A10",
+          "val": "Drainage upgrades"
+        },
+        {
+          "ref": "B10",
+          "val": "Informal settlements"
+        },
+        {
+          "ref": "C10",
+          "val": "0.4"
+        },
+        {
+          "ref": "D10",
+          "val": "0.38"
+        },
+        {
+          "ref": "E10",
+          "val": "0.36"
+        },
+        {
+          "ref": "F10",
+          "val": "0.37"
+        },
+        {
+          "ref": "G10",
+          "val": "0.365"
+        },
+        {
+          "ref": "H10",
+          "val": "0.015"
+        },
+        {
+          "ref": "I10",
+          "val": "0.035"
+        },
+        {
+          "ref": "J10",
+          "val": "On track"
+        },
+        {
+          "ref": "K10",
+          "val": "Yes"
+        }
+      ]
+    },
+    {
+      "rowNum": "12",
+      "cells": [
+        {
+          "ref": "A12",
+          "val": "Commitments off track"
+        },
+        {
+          "ref": "C12",
+          "val": "3"
+        }
+      ]
+    },
+    {
+      "rowNum": "13",
+      "cells": [
+        {
+          "ref": "A13",
+          "val": "Commitments at risk"
+        },
+        {
+          "ref": "C13",
+          "val": "2"
+        }
+      ]
+    },
+    {
+      "rowNum": "14",
+      "cells": [
+        {
+          "ref": "A14",
+          "val": "Average reporting overstatement"
+        },
+        {
+          "ref": "C14",
+          "val": "0.11"
+        }
+      ]
+    },
+    {
+      "rowNum": "15",
+      "cells": [
+        {
+          "ref": "A15",
+          "val": "Overall verified score (avg of verified / planned)"
+        },
+        {
+          "ref": "C15",
+          "val": "0.607017543859649"
+        }
+      ]
+    }
+  ],
+  "What-if Model": [
+    {
+      "rowNum": "1",
+      "cells": [
+        {
+          "ref": "A1",
+          "val": "What-if simulator (illustrative model)"
+        }
+      ]
+    },
+    {
+      "rowNum": "2",
+      "cells": [
+        {
+          "ref": "A2",
+          "val": "Coefficients are placeholder assumptions chosen to match the mockup, not validated climate science. Replace with a real model."
+        }
+      ]
+    },
+    {
+      "rowNum": "4",
+      "cells": [
+        {
+          "ref": "A4",
+          "val": "Baseline reduction achieved (%)"
+        },
+        {
+          "ref": "B4",
+          "val": "6"
+        },
+        {
+          "ref": "C4",
+          "val": "Assumption: from independent evidence on commitment detail screen"
+        }
+      ]
+    },
+    {
+      "rowNum": "5",
+      "cells": [
+        {
+          "ref": "A5",
+          "val": "Additional e-buses"
+        },
+        {
+          "ref": "B5",
+          "val": "200"
+        },
+        {
+          "ref": "C5",
+          "val": "Lever (edit)"
+        }
+      ]
+    },
+    {
+      "rowNum": "6",
+      "cells": [
+        {
+          "ref": "A6",
+          "val": "Bus lane corridors"
+        },
+        {
+          "ref": "B6",
+          "val": "3"
+        },
+        {
+          "ref": "C6",
+          "val": "Lever (edit)"
+        }
+      ]
+    },
+    {
+      "rowNum": "7",
+      "cells": [
+        {
+          "ref": "A7",
+          "val": "Reduction per extra e-bus (pct points)"
+        },
+        {
+          "ref": "B7",
+          "val": "0.035"
+        },
+        {
+          "ref": "C7",
+          "val": "Assumption: placeholder"
+        }
+      ]
+    },
+    {
+      "rowNum": "8",
+      "cells": [
+        {
+          "ref": "A8",
+          "val": "Reduction per corridor (pct points)"
+        },
+        {
+          "ref": "B8",
+          "val": "1.6"
+        },
+        {
+          "ref": "C8",
+          "val": "Assumption: placeholder"
+        }
+      ]
+    },
+    {
+      "rowNum": "9",
+      "cells": [
+        {
+          "ref": "A9",
+          "val": "Cost per e-bus (INR crore)"
+        },
+        {
+          "ref": "B9",
+          "val": "1.2"
+        },
+        {
+          "ref": "C9",
+          "val": "Assumption: placeholder"
+        }
+      ]
+    },
+    {
+      "rowNum": "10",
+      "cells": [
+        {
+          "ref": "A10",
+          "val": "Cost per corridor (INR crore)"
+        },
+        {
+          "ref": "B10",
+          "val": "45"
+        },
+        {
+          "ref": "C10",
+          "val": "Assumption: placeholder"
+        }
+      ]
+    },
+    {
+      "rowNum": "11",
+      "cells": [
+        {
+          "ref": "A11",
+          "val": "Target reduction (%)"
+        },
+        {
+          "ref": "B11",
+          "val": "30"
+        },
+        {
+          "ref": "C11",
+          "val": "From the city commitment"
+        }
+      ]
+    },
+    {
+      "rowNum": "13",
+      "cells": [
+        {
+          "ref": "A13",
+          "val": "Projected reduction by 2030 (%)"
+        },
+        {
+          "ref": "B13",
+          "val": "17.8"
+        }
+      ]
+    },
+    {
+      "rowNum": "14",
+      "cells": [
+        {
+          "ref": "A14",
+          "val": "Estimated cost (INR crore)"
+        },
+        {
+          "ref": "B14",
+          "val": "375"
+        }
+      ]
+    },
+    {
+      "rowNum": "15",
+      "cells": [
+        {
+          "ref": "A15",
+          "val": "Shortfall vs target (pct points)"
+        },
+        {
+          "ref": "B15",
+          "val": "12.2"
+        }
+      ]
+    },
+    {
+      "rowNum": "16",
+      "cells": [
+        {
+          "ref": "A16",
+          "val": "Meets target?"
+        },
+        {
+          "ref": "B16",
+          "val": "No"
+        }
+      ]
+    }
+  ]
+}
