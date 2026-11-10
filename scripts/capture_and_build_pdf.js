@@ -178,16 +178,17 @@ const views = [
   },
   {
     id: '12_admin_map',
-    name: 'Municipal GIS Command Map',
+    name: 'Municipal GIS Command Map (Live Climatic Layers)',
     portal: 'Government Intelligence Portal',
     url: 'http://localhost:3000/admin/map',
     route: '/admin/map',
-    action: 'Toggling map layers (NDVI, Air Quality, Bus Corridors) or clicking a geographic observation marker',
-    description: 'Geospatial intelligence map built with Leaflet and OpenStreetMap. Provides ward-level spatial analysis for Mumbai and Pune with observation pins, telemetry feeds, and boundary overlays.',
+    action: 'Toggling climatic atmosphere layers (🌧️ Monsoon Rain Radar, 🌡️ Urban Heat Island, 🍃 NDVI Canopy) or selecting observation markers',
+    description: 'Geospatial intelligence map built with Leaflet and OpenStreetMap. Features live weather and climatic intensity layers, Doppler precipitation radar (78 mm/hr Mithi stormfront), Landsat-9 Land Surface Temperature anomalies (44.3°C peak heat sink), and ward-level observation pins.',
     features: [
-      'Layer controls: Sentinel-2 NDVI overlay, CPCB Ground Monitors, Transit Corridors',
-      'Ward-level interactive markers displaying local verification status and empirical metrics',
-      'City zoom toggle between Mumbai and Pune jurisdictions'
+      'Interactive Climatic Atmosphere: Monsoon Rain Radar (78 mm/hr), Heat Island Hotspots (44.3°C), and NDVI Canopy',
+      'OpenStreetMap standard tiles + Esri Satellite Earth Observation basemaps (Zero API key required)',
+      'Climatic Phenomenon Inspector: Breaks down atmospheric causes, vulnerability hazards, and municipal interventions',
+      'Observation pin overlays tracking BEST depot electrification, mangrove buffers, and solar rooftop telemetry'
     ]
   },
   {
@@ -235,16 +236,16 @@ const views = [
   },
   {
     id: '16_citizen_map',
-    name: 'Citizen Public Spatial Map',
+    name: 'Citizen Public Spatial Map (Weather & Canopy)',
     portal: 'Citizen Accountability Portal',
     url: 'http://localhost:3000/citizen/map',
     route: '/citizen/map',
-    action: 'Clicking on neighborhood observation pins to view local green cover and air quality readings',
-    description: 'Accessible geospatial interface allowing citizens to explore local environmental health across Mumbai and Pune wards with simple status indicators.',
+    action: 'Clicking climatic layer toggles (Rain Radar, Urban Heat, Canopy) or tapping neighborhood observation pins',
+    description: 'Accessible geospatial interface allowing citizens to explore local environmental health, Doppler rain radar storm fronts, thermal heat anomalies, and ward canopy buffers across Mumbai and Pune.',
     features: [
-      'Geo-located neighborhood observation pins with plain-language metrics',
-      'Ward-level environmental health indicator summary',
-      'Accessible color scheme complying with public transparency standards'
+      'Public weather layers: Monsoon cloud & rain radar (78 mm/hr alert), urban heat stress, and forest cooling lungs',
+      'Clean OpenStreetMap vector tiles & Esri high-resolution satellite imagery with zero API key requirements',
+      'Plain-language neighborhood environmental metrics with direct access to statutory audit findings'
     ]
   },
   {
