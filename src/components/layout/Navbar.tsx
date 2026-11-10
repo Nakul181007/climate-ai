@@ -16,6 +16,7 @@ import {
   CheckCircle,
   AlertTriangle,
   X,
+  FileDown,
 } from 'lucide-react';
 import { useClimate, Language } from '@/lib/context/ClimateContext';
 import { CityId } from '@/lib/types';
@@ -174,9 +175,20 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Right Controls: Language Selector, Alerts & User Profile */}
+          {/* Right Controls: Download PDF, Language Selector, Alerts & User Profile */}
           <div className="flex items-center gap-2">
             
+            {/* Download Walkthrough PDF Button */}
+            <a
+              href="/api/download"
+              download="ClimateAI_Maharashtra_Platform_Walkthrough.pdf"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-forest-900 hover:bg-forest-950 text-white shadow-subtle border border-forest-800 transition-all hover:scale-102"
+              title="Download Platform Walkthrough PDF"
+            >
+              <FileDown className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="hidden sm:inline">Download PDF</span>
+            </a>
+
             {/* Multi-language Toggle (English, Hindi, Marathi) */}
             <div className="relative">
               <button

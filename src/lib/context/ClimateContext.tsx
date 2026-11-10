@@ -116,17 +116,18 @@ export function ClimateProvider({ children }: { children: React.ReactNode }) {
     const atRisk = list.filter((c) => c.progressStatus === 'AT_RISK').length;
     const offTrack = list.filter((c) => c.progressStatus === 'OFF_TRACK').length;
 
-    // Mathematical Aggregates from Excel model
+    // Mathematical Aggregates from Excel model:
+    // Consistent Portfolio Fulfillment Rate = (Sum of Verified Progress) / (Sum of Planned Progress) = 60.7%
+    let totalVerified = 0;
+    let totalPlanned = 0;
     let totalOverstatement = 0;
-    let totalRatio = 0;
     let countWithScores = 0;
 
     list.forEach((c) => {
-      if (typeof c.reportingOverstatement === 'number') {
+      if (typeof c.reportingOverstatement === 'number' && typeof c.verifiedProgress === 'number' && typeof c.plannedProgressToDate === 'number') {
         totalOverstatement += c.reportingOverstatement;
-        if (c.plannedProgressToDate > 0) {
-          totalRatio += c.verifiedProgress / c.plannedProgressToDate;
-        }
+        totalVerified += c.verifiedProgress;
+        totalPlanned += c.plannedProgressToDate;
         countWithScores += 1;
       }
     });
@@ -134,7 +135,7 @@ export function ClimateProvider({ children }: { children: React.ReactNode }) {
     const avgReportingOverstatementPct =
       countWithScores > 0 ? Number(((totalOverstatement / countWithScores) * 100).toFixed(1)) : 11.0;
     const overallVerifiedScorePct =
-      countWithScores > 0 ? Number(((totalRatio / countWithScores) * 100).toFixed(1)) : 60.7;
+      totalPlanned > 0 ? Number(((totalVerified / totalPlanned) * 100).toFixed(1)) : 60.7;
 
     return {
       totalCommitments,

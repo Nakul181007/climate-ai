@@ -64,9 +64,95 @@ export interface ClimaticZone {
   color: string;
   fillOpacity: number;
   pulseIconEmoji: string;
+  source?: string;
+  observationTimestamp?: string;
+  dataClassification?: string;
+  scientificLimitation?: string;
+}
+
+export function getZoneMetadata(zone: ClimaticZone) {
+  if (zone.type === 'monsoon_rain') {
+    return {
+      source: 'IMD Doppler Weather Radar & TRMM Calibration Grid',
+      observationTimestamp: 'Simulated Monsoon Storm Calibration (2024)',
+      dataClassification: 'SIMULATED DEMONSTRATION RECORD',
+      scientificLimitation:
+        'Simulated precipitation model; radar reflectivity captures airborne hydrometeors and does not directly equate to verified street waterlogging without SCADA nullah telemetry.',
+    };
+  }
+  if (zone.type === 'heat_island') {
+    return {
+      source: 'Landsat-8/9 Thermal Infrared Sensor (TIRS) Calibrated Model',
+      observationTimestamp: 'Simulated Dry Pre-Monsoon Peak (2024)',
+      dataClassification: 'SIMULATED DEMONSTRATION RECORD',
+      scientificLimitation:
+        'Radiometric Land Surface Temperature (LST) measures surface skin temperature across pavement and roofs, which differs from ambient 2-meter air temperature.',
+    };
+  }
+  if (zone.type === 'ndvi_canopy') {
+    return {
+      source: 'Copernicus Sentinel-2 Level-2A Multi-Spectral Surface Reflectance',
+      observationTimestamp: 'Simulated Post-Monsoon Composite (2024)',
+      dataClassification: 'SIMULATED DEMONSTRATION RECORD',
+      scientificLimitation:
+        'Scientific Limitation: NDVI measures leaf chlorophyll absorption in red vs near-infrared light (vegetation greenness) and does not directly count individual trees or guarantee sapling survival.',
+    };
+  }
+  return {
+    source: 'CPCB CAAQMS Telemetry & AERMOD Atmospheric Inversion Model',
+    observationTimestamp: 'Simulated Winter Morning Plume Dispersion',
+    dataClassification: 'SIMULATED DEMONSTRATION RECORD',
+    scientificLimitation:
+      'Atmospheric boundary layer dispersion model; local traffic idling can cause micro-scale variations from arterial roadside monitoring grid.',
+  };
 }
 
 const LOCALITY_MARKERS: MapMarkerData[] = [
+  {
+    id: 'loc-mum-keast',
+    name: 'Ward K-East (Andheri East & MIDC Corridor)',
+    cityId: 'mumbai',
+    coords: [19.1176, 72.8631],
+    sector: 'urban-greening',
+    indicator: 'NDVI_VEGETATION',
+    primaryValue: 'NDVI 0.12 (13.5% verified vs 50% claimed)',
+    status: 'POTENTIAL_DISCREPANCY',
+    commitmentTitle: 'Green Cover & Mangrove Buffer Expansion in Ward K-East (+4% Canopy Gain)',
+    source: 'Copernicus Sentinel-2 Level-2A NDVI & IIT Bombay UAV Sampling',
+    observationDate: '2024-10-10',
+    notes: 'Sentinel-2 NDVI detects 78% seedling mortality across industrial plantation plots, creating a +36.5% reporting overstatement.',
+    isSimulated: true,
+  },
+  {
+    id: 'loc-mum-best',
+    name: 'BEST Central Fleet Operations Depot (Wadala & Majas)',
+    cityId: 'mumbai',
+    coords: [19.0178, 72.8478],
+    sector: 'transport',
+    indicator: 'EV_FLEET_RATIO',
+    primaryValue: '30.0% Verified (120 of 400 e-buses)',
+    status: 'POTENTIAL_DISCREPANCY',
+    commitmentTitle: 'Electrify 400 Public Transport Buses (BEST Municipal Fleet)',
+    source: 'BEST ITMS GPS Telemetry & Sentinel-2 Charging Footprint',
+    observationDate: '2024-10-15',
+    notes: 'Independent GPS telematics confirm 120 e-buses in route service vs 180 claimed. 60 stabled units await 33kV substation energisation.',
+    isSimulated: true,
+  },
+  {
+    id: 'loc-mum-bkc',
+    name: 'BKC Distributed Commercial Rooftops',
+    cityId: 'mumbai',
+    coords: [19.0657, 72.8686],
+    sector: 'energy-access',
+    indicator: 'ROOFTOP_SOLAR_MW',
+    primaryValue: '190 MW verified (38% of 500 MW target)',
+    status: 'PARTIALLY_SUPPORTED',
+    commitmentTitle: 'Rooftop Solar PV Uptake (500 MW Capacity)',
+    source: 'Sentinel-2 Array Classifier & DISCOM Net-Metering',
+    observationDate: '2024-10-01',
+    notes: 'Commercial rooftop arrays verified across Bandra-Kurla Complex; interconnection backlog delays residential scale-up.',
+    isSimulated: true,
+  },
   {
     id: 'loc-mum-aarey',
     name: 'Aarey Forest Buffer Corridor',
@@ -80,51 +166,6 @@ const LOCALITY_MARKERS: MapMarkerData[] = [
     source: 'Copernicus Sentinel-2 Level-2A',
     observationDate: '2024-10-12',
     notes: 'Zero net loss confirmed across 81,200 grid cells over 2022-2024 baseline.',
-    isSimulated: true,
-  },
-  {
-    id: 'loc-mum-meast',
-    name: 'M-East Ward (Govandi & Chembur)',
-    cityId: 'mumbai',
-    coords: [19.055, 72.925],
-    sector: 'urban-greening',
-    indicator: 'NDVI_VEGETATION',
-    primaryValue: 'NDVI 0.208 (-5.4% drop)',
-    status: 'POTENTIAL_DISCREPANCY',
-    commitmentTitle: 'Urban Green Canopy Expansion in M-East Ward',
-    source: 'Sentinel-2 BOA vs Municipal Nursery Records',
-    observationDate: '2024-09-24',
-    notes: 'Satellite imagery shows greenness decline contradicting claimed 45,000 nursery saplings.',
-    isSimulated: true,
-  },
-  {
-    id: 'loc-mum-best',
-    name: 'BEST Central Fleet Operations Depot',
-    cityId: 'mumbai',
-    coords: [19.0178, 72.8478],
-    sector: 'transport',
-    indicator: 'EV_FLEET_RATIO',
-    primaryValue: '46.8% Electric (1,460 e-buses)',
-    status: 'PARTIALLY_SUPPORTED',
-    commitmentTitle: '100% Electrification of BEST Municipal Bus Fleet',
-    source: 'BEST Telemetry & Smart Card Logs',
-    observationDate: '2024-10-31',
-    notes: 'Impressive induction pace, but grid transformer bottlenecks delay 100% 2026 goal.',
-    isSimulated: true,
-  },
-  {
-    id: 'loc-mum-bkc',
-    name: 'BKC Distributed Commercial Rooftops',
-    cityId: 'mumbai',
-    coords: [19.0657, 72.8686],
-    sector: 'energy-access',
-    indicator: 'ROOFTOP_SOLAR_MW',
-    primaryValue: '42 MW verified / 500 MW target',
-    status: 'INCONCLUSIVE',
-    commitmentTitle: '500 MW Municipal & Commercial Rooftop Solar PV',
-    source: 'MEDA Registry & DISCOM Net-Metering',
-    observationDate: '2024-10-05',
-    notes: 'Decentralized private commercial solar feeds remain fragmented without API sync.',
     isSimulated: true,
   },
   {
@@ -842,90 +883,120 @@ export function ClimateMap() {
         <div className="lg:col-span-4 card-enterprise p-5 flex flex-col justify-between h-[560px] overflow-y-auto">
           {activeClimaticZone ? (
             /* CLIMATIC PHENOMENON INSPECTOR */
-            <div className="space-y-4">
-              <div className="flex items-start justify-between">
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-charcoal-400">
-                    Climatic Phenomenon Inspection
-                  </span>
-                  <h3 className="text-base font-extrabold text-forest-950 mt-0.5 flex items-center gap-1.5">
-                    <span>{activeClimaticZone.pulseIconEmoji}</span>
-                    <span>{activeClimaticZone.name}</span>
-                  </h3>
-                </div>
-                <span
-                  className="px-2 py-0.5 rounded text-[10px] font-bold uppercase text-white shadow-xs"
-                  style={{ backgroundColor: activeClimaticZone.color }}
-                >
-                  {activeClimaticZone.severity}
-                </span>
-              </div>
+            (() => {
+              const zoneMeta = getZoneMetadata(activeClimaticZone);
+              return (
+                <div className="space-y-4">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-charcoal-400">
+                          Climatic Layer
+                        </span>
+                        <span className="px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 font-mono font-bold text-[9px] border border-amber-300">
+                          {zoneMeta.dataClassification}
+                        </span>
+                      </div>
+                      <h3 className="text-base font-extrabold text-forest-950 mt-0.5 flex items-center gap-1.5">
+                        <span>{activeClimaticZone.pulseIconEmoji}</span>
+                        <span>{activeClimaticZone.name}</span>
+                      </h3>
+                    </div>
+                    <span
+                      className="px-2 py-0.5 rounded text-[10px] font-bold uppercase text-white shadow-xs"
+                      style={{ backgroundColor: activeClimaticZone.color }}
+                    >
+                      {activeClimaticZone.severity}
+                    </span>
+                  </div>
 
-              {/* Main Metric Spotlight */}
-              <div
-                className="p-3.5 rounded-xl border text-white shadow-sm"
-                style={{ backgroundColor: activeClimaticZone.color }}
-              >
-                <span className="text-[10px] uppercase font-bold tracking-wider opacity-85 block">
-                  {activeClimaticZone.metricTitle}
-                </span>
-                <span className="text-xl font-black block mt-0.5 font-mono">
-                  {activeClimaticZone.metricValue}
-                </span>
-                <span className="text-[11px] mt-1 block opacity-90 font-medium">
-                  Anomaly: {activeClimaticZone.anomalyDelta}
-                </span>
-              </div>
+                  {/* Main Metric Spotlight */}
+                  <div
+                    className="p-3.5 rounded-xl border text-white shadow-sm"
+                    style={{ backgroundColor: activeClimaticZone.color }}
+                  >
+                    <span className="text-[10px] uppercase font-bold tracking-wider opacity-85 block">
+                      {activeClimaticZone.metricTitle}
+                    </span>
+                    <span className="text-xl font-black block mt-0.5 font-mono">
+                      {activeClimaticZone.metricValue}
+                    </span>
+                    <span className="text-[11px] mt-1 block opacity-90 font-medium">
+                      Anomaly: {activeClimaticZone.anomalyDelta}
+                    </span>
+                  </div>
 
-              <div className="space-y-3 text-xs">
-                <div>
-                  <span className="text-charcoal-400 block text-[11px] font-semibold mb-1">
-                    Atmospheric Cause & Terrain Dynamics
-                  </span>
-                  <p className="text-xs text-charcoal-700 leading-relaxed bg-charcoal-50 p-2.5 rounded-lg border border-charcoal-100">
-                    {activeClimaticZone.description}
-                  </p>
-                </div>
+                  {/* Scientific Data Transparency Card */}
+                  <div className="p-3 rounded-lg bg-amber-50/80 border border-amber-200 text-xs text-amber-950 space-y-1.5 font-sans">
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className="text-amber-800 font-semibold">Instrument & Source:</span>
+                      <span className="font-medium text-amber-950 text-right">{zoneMeta.source}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className="text-amber-800 font-semibold">Observation Ref:</span>
+                      <span className="font-mono text-amber-900">{zoneMeta.observationTimestamp}</span>
+                    </div>
+                    <div className="text-[11px] text-amber-900 pt-1.5 border-t border-amber-200/60 leading-relaxed font-sans">
+                      {zoneMeta.scientificLimitation}
+                    </div>
+                  </div>
 
-                <div>
-                  <span className="text-rose-700 font-bold block text-[11px] mb-1 flex items-center gap-1">
-                    <ShieldAlert className="w-3.5 h-3.5 text-rose-600" />
-                    <span>Public Vulnerability Alert</span>
-                  </span>
-                  <p className="text-xs text-rose-900 bg-rose-50 p-2.5 rounded-lg border border-rose-200 leading-relaxed font-medium">
-                    {activeClimaticZone.impactAlert}
-                  </p>
-                </div>
+                  <div className="space-y-3 text-xs">
+                    <div>
+                      <span className="text-charcoal-400 block text-[11px] font-semibold mb-1">
+                        Atmospheric Cause & Terrain Dynamics
+                      </span>
+                      <p className="text-xs text-charcoal-700 leading-relaxed bg-charcoal-50 p-2.5 rounded-lg border border-charcoal-100">
+                        {activeClimaticZone.description}
+                      </p>
+                    </div>
 
-                <div>
-                  <span className="text-emerald-800 font-bold block text-[11px] mb-1 flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>Recommended Municipal Intervention</span>
-                  </span>
-                  <p className="text-xs text-emerald-950 bg-emerald-50/80 p-2.5 rounded-lg border border-emerald-200 leading-relaxed">
-                    {activeClimaticZone.recommendedMitigation}
-                  </p>
-                </div>
+                    <div>
+                      <span className="text-rose-700 font-bold block text-[11px] mb-1 flex items-center gap-1">
+                        <ShieldAlert className="w-3.5 h-3.5 text-rose-600" />
+                        <span>Public Vulnerability Alert</span>
+                      </span>
+                      <p className="text-xs text-rose-900 bg-rose-50 p-2.5 rounded-lg border border-rose-200 leading-relaxed font-medium">
+                        {activeClimaticZone.impactAlert}
+                      </p>
+                    </div>
 
-                <div className="pt-2 border-t border-charcoal-100 flex items-center justify-between text-[10px] font-mono text-charcoal-400">
-                  <span>
-                    Radius: {(activeClimaticZone.radiusMeters / 1000).toFixed(1)} km
-                  </span>
-                  <span>
-                    {activeClimaticZone.coords[0].toFixed(3)}°N,{' '}
-                    {activeClimaticZone.coords[1].toFixed(3)}°E
-                  </span>
+                    <div>
+                      <span className="text-emerald-800 font-bold block text-[11px] mb-1 flex items-center gap-1">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                        <span>Recommended Municipal Intervention</span>
+                      </span>
+                      <p className="text-xs text-emerald-950 bg-emerald-50/80 p-2.5 rounded-lg border border-emerald-200 leading-relaxed">
+                        {activeClimaticZone.recommendedMitigation}
+                      </p>
+                    </div>
+
+                    <div className="pt-2 border-t border-charcoal-100 flex items-center justify-between text-[10px] font-mono text-charcoal-400">
+                      <span>
+                        Radius: {(activeClimaticZone.radiusMeters / 1000).toFixed(1)} km
+                      </span>
+                      <span>
+                        {activeClimaticZone.coords[0].toFixed(3)}°N,{' '}
+                        {activeClimaticZone.coords[1].toFixed(3)}°E
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              );
+            })()
           ) : activeLocality ? (
             /* STATUTORY LOCALITY INSPECTOR */
             <div className="space-y-4">
               <div className="flex items-start justify-between">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-charcoal-400">
-                    Locality Inspection
-                  </span>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-charcoal-400">
+                      Locality Telemetry
+                    </span>
+                    <span className="px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 font-mono font-bold text-[9px] border border-amber-300">
+                      {activeLocality.isSimulated ? 'SIMULATED DEMONSTRATION RECORD' : 'LIVE OBSERVATION RECORD'}
+                    </span>
+                  </div>
                   <h3 className="text-base font-bold text-forest-950 mt-0.5">
                     {activeLocality.name}
                   </h3>
@@ -958,11 +1029,17 @@ export function ClimateMap() {
                 </div>
 
                 <div>
-                  <span className="text-charcoal-400 block text-[11px]">Collection Date</span>
+                  <span className="text-charcoal-400 block text-[11px]">Observation Timestamp</span>
                   <span className="font-mono text-charcoal-700">
                     {activeLocality.observationDate}
                   </span>
                 </div>
+
+                {activeLocality.indicator === 'NDVI_VEGETATION' && (
+                  <div className="p-2 rounded bg-amber-50 border border-amber-200 text-[11px] text-amber-900 leading-snug">
+                    <strong>Scientific Limitation:</strong> NDVI measures canopy photosynthetic activity (leaf chlorophyll greenness) and does not directly count individual trees.
+                  </div>
+                )}
 
                 <div className="pt-2 border-t border-charcoal-100">
                   <span className="text-charcoal-400 block text-[11px] mb-1">Audit Findings</span>
@@ -1005,8 +1082,8 @@ export function ClimateMap() {
 
           <div className="pt-4 border-t border-charcoal-100 text-[10px] text-charcoal-400 flex items-center justify-between">
             <span>OpenStreetMap & Copernicus Remote Sensing</span>
-            <span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-900 font-semibold uppercase">
-              Live Atmosphere
+            <span className="px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 font-semibold uppercase font-mono">
+              Simulated Demonstration Scenario
             </span>
           </div>
         </div>

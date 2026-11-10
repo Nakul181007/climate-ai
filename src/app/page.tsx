@@ -19,6 +19,7 @@ import {
   MapPin,
   ChevronRight,
   Layers,
+  FileDown,
 } from 'lucide-react';
 import { DemoNotice } from '@/components/common/DemoNotice';
 import { CITIES } from '@/lib/demo-data';
@@ -122,6 +123,35 @@ export default function LandingGatewayPage() {
           <p className="mt-6 text-lg text-charcoal-600 leading-relaxed font-normal">
             An enterprise-grade climate intelligence platform connecting municipal climate action plans with independent Earth observation satellite data, ground-level sensor telemetry, and explainable deterministic audit verification.
           </p>
+
+          {/* Quick CTA Actions */}
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link
+              href="/admin"
+              className="px-5 py-2.5 text-xs font-bold text-white bg-forest-900 hover:bg-forest-850 rounded-xl shadow-subtle flex items-center gap-2 transition-all hover:scale-102"
+            >
+              <Building2 className="w-4 h-4 text-emerald-400" />
+              <span>Launch Government Portal</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+
+            <Link
+              href="/citizen"
+              className="px-5 py-2.5 text-xs font-bold text-emerald-950 bg-emerald-100/80 hover:bg-emerald-200/80 border border-emerald-300 rounded-xl shadow-subtle flex items-center gap-2 transition-all hover:scale-102"
+            >
+              <Users className="w-4 h-4 text-emerald-700" />
+              <span>Explore Citizen Tracker</span>
+            </Link>
+
+            <a
+              href="/api/download"
+              download="ClimateAI_Maharashtra_Platform_Walkthrough.pdf"
+              className="px-4 py-2.5 text-xs font-bold text-charcoal-700 bg-surface hover:bg-charcoal-50 border border-charcoal-200 rounded-xl shadow-subtle flex items-center gap-2 transition-all hover:scale-102"
+            >
+              <FileDown className="w-4 h-4 text-forest-700" />
+              <span>Download Platform Walkthrough PDF</span>
+            </a>
+          </div>
         </div>
 
         {/* Dual Role Gateway Cards */}

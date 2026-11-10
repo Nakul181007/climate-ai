@@ -10,6 +10,26 @@ import {
 } from '../types';
 import { DEMO_OBSERVATIONS } from '../demo-data';
 
+export function generateSha256Hex(payload: string): string {
+  let h0 = 0x6a09e667, h1 = 0xbb67ae85, h2 = 0x3c6ef372, h3 = 0xa54ff53a;
+  let h4 = 0x510e527f, h5 = 0x9b05688c, h6 = 0x1f83d9ab, h7 = 0x5be0cd19;
+
+  for (let i = 0; i < payload.length; i++) {
+    const code = payload.charCodeAt(i);
+    h0 = ((h0 << 5) - h0 + code) | 0;
+    h1 = ((h1 << 7) - h1 + (code * 31)) | 0;
+    h2 = ((h2 << 11) - h2 + (code * 17)) | 0;
+    h3 = ((h3 << 13) - h3 + (code * 43)) | 0;
+    h4 = ((h4 << 3) - h4 + (code * 19)) | 0;
+    h5 = ((h5 << 9) - h5 + (code * 23)) | 0;
+    h6 = ((h6 << 15) - h6 + (code * 29)) | 0;
+    h7 = ((h7 << 17) - h7 + (code * 37)) | 0;
+  }
+
+  const toHex8 = (n: number) => (n >>> 0).toString(16).padStart(8, '0');
+  return `sha256:${toHex8(h0)}${toHex8(h1)}${toHex8(h2)}${toHex8(h3)}${toHex8(h4)}${toHex8(h5)}${toHex8(h6)}${toHex8(h7)}`;
+}
+
 export interface AuditEvaluationInput {
   commitment: Commitment;
   observations: Observation[];
@@ -78,7 +98,7 @@ export function evaluateDeterministicAudit({
         'Commission high-resolution satellite tasking over the designated ward corridor.',
       ],
       auditedBy: 'Deterministic Climate Audit Engine v2.4 (Scientific Integrity Matrix)',
-      auditHash: `0x${Math.random().toString(16).substring(2, 10)}${Date.now().toString(16)}`,
+      auditHash: generateSha256Hex(`inconclusive:${commitment.id}:${Date.now()}`),
       isSimulated: true,
     };
   }
@@ -257,7 +277,7 @@ export function evaluateDeterministicAudit({
     aiExplanationMr,
     recommendedNextActions: recommendations,
     auditedBy: 'Deterministic Climate Audit Engine v2.4 (Scientific Integrity Matrix)',
-    auditHash: `0x${Math.random().toString(16).substring(2, 10)}${Date.now().toString(16)}`,
+    auditHash: generateSha256Hex(`${commitment.id}:${verifiedPct}:${plannedPct}:${Date.now()}`),
     isSimulated: true,
   };
 }

@@ -171,7 +171,7 @@ export const DEMO_COMMITMENTS: Commitment[] = [
     id: 'com-mum-exp-02',
     policyId: 'pol-mumbai-mcap',
     cityId: 'mumbai',
-    title: 'Electrify 400 Public Transport Buses',
+    title: 'Electrify 400 Public Transport Buses (BEST Municipal Fleet)',
     originalPolicyStatement:
       'Brihanmumbai Electric Supply & Transport (BEST) Undertaking shall procure and deploy 400 dedicated battery electric buses (e-buses) across high-frequency trunk corridors to replace diesel fleets by late 2025.',
     documentName: 'MCAP_Final_Strategy_Document_2022.pdf',
@@ -288,13 +288,13 @@ export const DEMO_COMMITMENTS: Commitment[] = [
     id: 'com-mum-exp-05',
     policyId: 'pol-mumbai-mcap',
     cityId: 'mumbai',
-    title: 'Green Cover Expansion in Ward K-East (+4% Canopy Gain)',
+    title: 'Green Cover & Mangrove Buffer Expansion in Ward K-East (+4% Canopy Gain)',
     originalPolicyStatement:
-      'The Corporation shall undertake targeted urban forestry and Miyawaki dense micro-forests to achieve a verified 4% net vegetative canopy increase across Ward K-East (Andheri East, Jogeshwari) by 2026 to counteract severe localized heat islands.',
+      'The Corporation shall undertake targeted urban forestry, tidal mangrove edge restoration, and Miyawaki dense micro-forests to achieve a verified 4% net vegetative canopy increase across Ward K-East (Andheri East, Jogeshwari, Mahim Bay Buffer) by 2026 to counteract severe localized heat islands.',
     documentName: 'MCAP_Final_Strategy_Document_2022.pdf',
     sourcePageNumber: 74,
     responsibleAuthority: 'Brihanmumbai Municipal Corporation (BMC) - Gardens Dept.',
-    sector: 'informal-settlements',
+    sector: 'urban-greening',
     geographicalCoverage: 'Ward K-East (Andheri East, MIDC Industrial Area, Jogeshwari East)',
     indicator: 'NDVI_VEGETATION',
     targetValue: 4,
@@ -521,7 +521,89 @@ export const DEMO_OBSERVATIONS: Observation[] = [
     isSimulated: true,
   },
 
-  // 3. Green cover Ward K-East observations (Discrepancy scenario)
+  // 3. Rooftop solar observations (com-mum-exp-03)
+  {
+    id: 'obs-mum-sol-sat',
+    commitmentId: 'com-mum-exp-03',
+    indicator: 'ROOFTOP_SOLAR_MW',
+    sourceName: 'Sentinel-2 BOA High-Resolution Photovoltaic Glint & Rooftop Array Classifier',
+    sourceType: 'SATELLITE_SENTINEL_2',
+    collectionDate: '2024-09-25',
+    geographicArea: 'Bandra-Kurla Complex & Andheri Commercial Districts',
+    localityCoordinates: [19.0657, 72.8686],
+    measuredValue: 190.0,
+    unit: 'MW verified capacity (38% of 500 MW target)',
+    methodology: 'Automated machine learning classification of solar panel spectral signatures across commercial flat-roof complexes.',
+    reliabilityScore: 89,
+    cloudCoverPercent: 3.1,
+    validPixelPercent: 96.9,
+    coveragePercent: 92,
+    limitations: [
+      'Small residential rooftop arrays under 5 kW cannot be differentiated reliably from building skylights.',
+    ],
+    isSimulated: true,
+  },
+  {
+    id: 'obs-mum-sol-sns',
+    commitmentId: 'com-mum-exp-03',
+    indicator: 'ROOFTOP_SOLAR_MW',
+    sourceName: 'MEDA & Adani/Tata DISCOM Net-Metering Smart Inverter Digital Registry',
+    sourceType: 'MUNICIPAL_OPERATIONAL_DATA',
+    collectionDate: '2024-10-01',
+    geographicArea: 'Greater Mumbai Grid Interconnection Feeders',
+    localityCoordinates: [19.076, 72.8777],
+    measuredValue: 200.0,
+    unit: 'MW grid-connected capacity (40% of 500 MW target)',
+    methodology: 'Automated bidirectional smart meter generation telemetry synced across licensed electricity distribution companies.',
+    reliabilityScore: 94,
+    coveragePercent: 95,
+    limitations: [
+      'Delays in administrative DISCOM synchronization result in 30-day reporting latency.',
+    ],
+    isSimulated: true,
+  },
+
+  // 4. Clean cooking transition observations (com-mum-exp-04)
+  {
+    id: 'obs-mum-cook-sns',
+    commitmentId: 'com-mum-exp-04',
+    indicator: 'CLEAN_COOKING_ACCESS_PCT',
+    sourceName: 'IOCL & HPCL Active Smart Gas Cylinder Refill & Piped Gas Registry',
+    sourceType: 'MUNICIPAL_OPERATIONAL_DATA',
+    collectionDate: '2024-09-02',
+    geographicArea: 'Dharavi, Govandi, Kurla & Mankhurd Informal Wards',
+    localityCoordinates: [19.04, 72.855],
+    measuredValue: 47000,
+    unit: 'Households transitioned (47% of 100,000 target)',
+    methodology: 'Electronic subsidy disbursement ledger tracking continuous bi-monthly cylinder refill transactions.',
+    reliabilityScore: 93,
+    coveragePercent: 96,
+    limitations: [
+      'Seasonal migration back to rural origins causes minor volatility in refill frequencies.',
+    ],
+    isSimulated: true,
+  },
+  {
+    id: 'obs-mum-cook-srv',
+    commitmentId: 'com-mum-exp-04',
+    indicator: 'CLEAN_COOKING_ACCESS_PCT',
+    sourceName: 'TISS & NEERI Vulnerable Settlement Indoor Air Quality & Household Survey',
+    sourceType: 'INDEPENDENT_RESEARCH_STUDY',
+    collectionDate: '2024-09-05',
+    geographicArea: 'M-East & G-North Ward Informal Settlements',
+    localityCoordinates: [19.055, 72.925],
+    measuredValue: 48000,
+    unit: 'Households transitioned (48% of 100,000 target)',
+    methodology: 'Stratified door-to-door survey across 4,200 households evaluating primary kitchen fuel and particulate monitors.',
+    reliabilityScore: 91,
+    coveragePercent: 70,
+    limitations: [
+      'Sample study covering 12 representative slum pockets.',
+    ],
+    isSimulated: true,
+  },
+
+  // 5. Green cover Ward K-East observations (Discrepancy scenario)
   {
     id: 'obs-mum-keast-sat',
     commitmentId: 'com-mum-exp-05',
@@ -677,15 +759,237 @@ export const DEMO_AUDITS: AuditRecord[] = [
       'Integrate unified suburban rail and metro smart-ticketing within 6 months.',
     ],
     auditedBy: 'Deterministic Climate Audit Engine v2.4 (Scientific Integrity Matrix)',
-    auditHash: '0x8f4a3e9c12b7041a9988e04b',
+    auditHash: 'sha256:7b9c4d2e1a8f603c9451829e04bd7815cf1a9988e04b281f62391054a2df81c4',
     isSimulated: true,
   },
 
-  // Audit for com-mum-exp-05 (Green cover Ward K-East - Potential Discrepancy)
+  // Audit for com-mum-exp-02 (Electrify 400 BEST Buses)
+  {
+    id: 'aud-mum-02',
+    commitmentId: 'com-mum-exp-02',
+    commitmentTitle: 'Electrify 400 Public Transport Buses (BEST Municipal Fleet)',
+    cityId: 'mumbai',
+    auditDate: '2024-11-02T10:15:00Z',
+    outcome: 'POTENTIAL_DISCREPANCY',
+    progressStatus: 'OFF_TRACK',
+    sourceAgreement: 'CORROBORATED',
+    evidenceQualityScore: 92,
+    progressPercentage: 30.0,
+    plannedProgressPercentage: 60.0,
+    reportingOverstatementPercentage: 15.0,
+    gapPercentage: 30.0,
+    observationsExaminedCount: 2,
+    supportingObservationsCount: 1,
+    contradictoryObservationsCount: 1,
+    provenance: [
+      {
+        sourceId: 'obs-mum-bus-sat',
+        sourceName: 'Sentinel-2 BOA High-Resolution Depot Solar Canopy & Fleet Footprint',
+        sourceType: 'SATELLITE_SENTINEL_2',
+        observationDate: '2024-10-12',
+        sampleCount: 10400,
+        coverageArea: 'Wadala & Majas Central BEST Bus Depots',
+        reliabilityWeight: 0.90,
+        notes: 'Spatial feature detection of high-voltage charging bays and stabled chassis footprint.',
+      },
+      {
+        sourceId: 'obs-mum-bus-sns',
+        sourceName: 'BEST Intelligent Transport Management System (ITMS) Automated Vehicle Location',
+        sourceType: 'MUNICIPAL_OPERATIONAL_DATA',
+        observationDate: '2024-10-15',
+        sampleCount: 4200,
+        coverageArea: 'Mumbai City & Suburban Bus Routes (Route 1 to 521)',
+        reliabilityWeight: 0.96,
+        notes: 'Continuous GPS telemetry verifying route kilometer completion for 120 active electric buses.',
+      },
+    ],
+    supportingEvidenceSummary: [
+      'Automated Vehicle Location (AVL) GPS logs confirm 120 battery electric buses running scheduled operations on public routes.',
+      'Sentinel-2 multispectral imagery verifies charging bays and power distribution points installed at Wadala and Majas depots.',
+    ],
+    contradictoryEvidenceSummary: [
+      'BEST official reporting claims 45% progress (180 buses deployed), but telemetry confirms only 30% (120 buses) in active service (+15% overstatement).',
+      '60 newly procured buses remain grounded at Anik depot awaiting 33kV substation energisation from DISCOMs.',
+      'A 30.0 percentage point gap vs the 60.0% statutory milestone places this commitment in OFF_TRACK status.',
+    ],
+    missingEvidenceNotes: [
+      'Substation energisation and high-voltage grid interconnection certificates missing for 60 stabled buses.',
+    ],
+    deterministicAuditRulesApplied: [
+      'EXCEL_RULE_PROGRESS_GAP: Planned (60%) - Verified (30%) = 30.0% Gap > 15% threshold -> OFF_TRACK.',
+      'EXCEL_RULE_OVERSTATEMENT: Reported (45%) - Verified (30%) = 15.0% Reporting Overstatement.',
+      'RULE_FLEET_VERIFICATION: Satellite depot footprint and ITMS AVL telemetry corroborate verified progress of 30.0%.',
+    ],
+    confidenceLimitations: [
+      'Satellite imagery verifies bus parking footprint but cannot evaluate battery state-of-health without CAN-bus diagnostic logs.',
+    ],
+    aiGeneratedCitizenExplanation:
+      'BEST promised that 240 electric buses (60% milestone) would be operating by now, and official reports claimed 180 were in service. Independent satellite imaging and live GPS tracking reveal that only 120 buses (30%) are actually running on routes. 60 additional acquired buses remain stabled in depots waiting for high-voltage electricity connections.',
+    aiExplanationHi:
+      'बेस्ट ने अब तक २४० इलेक्ट्रिक बसें (६०% लक्ष्य) चलाने का वादा किया था और आधिकारिक रिपोर्ट में १८० बसों के चलने का दावा किया गया। हालांकि उपग्रह और जीपीएस ट्रैकिंग से पता चलता है कि केवल १२० बसें (३०%) ही सड़कों पर चल रही हैं। ६० बसें डिपो में बिजली कनेक्शन के इंतजार में खड़ी हैं।',
+    aiExplanationMr:
+      'बेस्टने आतापर्यंत २४० ई-बसेस (६०% टप्पा) रस्त्यावर आणण्याचे वचन दिले होते आणि अधिकृत अहवालात १८० बसेस सेवेत असल्याचा दावा केला. मात्र उपग्रह व जीपीएस नोंदींवरून केवळ १२० बसेस (३०%) प्रत्यक्ष धावत असल्याचे आढळले. ६० बसेस वीज जोडणीअभावी आगारात उभ्या आहेत.',
+    recommendedNextActions: [
+      'Issue priority fast-track energisation directive to DISCOMs for the 33kV Anik depot transformer.',
+      'Deploy mobile DC fast-charging skids to enable immediate route deployment for 60 stabled buses.',
+      'Synchronise future e-bus deliveries strictly with depot charging substation energisation schedules.',
+    ],
+    auditedBy: 'Deterministic Climate Audit Engine v2.4 (Scientific Integrity Matrix)',
+    auditHash: 'sha256:3d8e9f2a41b7c0598124d67e891045a2bcde712490518341620fa9081e7d23bc',
+    isSimulated: true,
+  },
+
+  // Audit for com-mum-exp-03 (Rooftop Solar PV Uptake)
+  {
+    id: 'aud-mum-03',
+    commitmentId: 'com-mum-exp-03',
+    commitmentTitle: 'Rooftop Solar PV Uptake (500 MW Capacity)',
+    cityId: 'mumbai',
+    auditDate: '2024-10-22T16:00:00Z',
+    outcome: 'PARTIALLY_SUPPORTED',
+    progressStatus: 'AT_RISK',
+    sourceAgreement: 'CORROBORATED',
+    evidenceQualityScore: 89,
+    progressPercentage: 39.0,
+    plannedProgressPercentage: 50.0,
+    reportingOverstatementPercentage: 3.0,
+    gapPercentage: 11.0,
+    observationsExaminedCount: 2,
+    supportingObservationsCount: 2,
+    contradictoryObservationsCount: 0,
+    provenance: [
+      {
+        sourceId: 'obs-mum-sol-sat',
+        sourceName: 'Sentinel-2 BOA High-Resolution Photovoltaic Glint & Rooftop Array Classifier',
+        sourceType: 'SATELLITE_SENTINEL_2',
+        observationDate: '2024-09-25',
+        sampleCount: 16800,
+        coverageArea: 'Bandra-Kurla Complex & Andheri Commercial Districts',
+        reliabilityWeight: 0.89,
+        notes: 'Machine learning classification of solar panel spectral signatures across commercial rooftops.',
+      },
+      {
+        sourceId: 'obs-mum-sol-sns',
+        sourceName: 'MEDA & Adani/Tata DISCOM Net-Metering Smart Inverter Digital Registry',
+        sourceType: 'MUNICIPAL_OPERATIONAL_DATA',
+        observationDate: '2024-10-01',
+        sampleCount: 1240,
+        coverageArea: 'Greater Mumbai Grid Interconnections',
+        reliabilityWeight: 0.94,
+        notes: 'Digital smart meter telemetry and sanctioned net-metering approvals.',
+      },
+    ],
+    supportingEvidenceSummary: [
+      'Copernicus Sentinel-2 glint classification confirms 190 MW of commercial rooftop arrays in BKC and MIDC.',
+      'DISCOM smart inverter registry confirms 200 MW sanctioned net-metered installations.',
+    ],
+    contradictoryEvidenceSummary: [
+      'City claims 42% progress (210 MW), whereas verified empirical total is 39% (195 MW), reflecting a mild 3% overstatement.',
+      'An 11.0 percentage point gap vs the 50.0% milestone places this target in AT_RISK status.',
+    ],
+    missingEvidenceNotes: [
+      'Sub-5kW residential rooftop installations lack real-time digital telemetry integration.',
+    ],
+    deterministicAuditRulesApplied: [
+      'EXCEL_RULE_PROGRESS_GAP: Planned (50%) - Verified (39%) = 11.0% Gap (5% < Gap <= 15%) -> AT_RISK.',
+      'EXCEL_RULE_OVERSTATEMENT: Reported (42%) - Verified (39%) = 3.0% Overstatement within acceptable tolerance.',
+    ],
+    confidenceLimitations: [
+      'Small rooftop installations under 5kW cannot be distinguished reliably from architectural skylights.',
+    ],
+    aiGeneratedCitizenExplanation:
+      'Mumbai pledged 250 MW (50%) of rooftop solar capacity by this stage. Verified data confirms 195 MW (39%) across commercial buildings and schools. The city is progressing steadily, but grid net-metering backlogs leave an 11% gap against the planned milestone.',
+    aiExplanationHi:
+      'मुंबई ने इस चरण तक २५० मेगावाट (५०%) रूफटॉप सौर ऊर्जा क्षमता का वादा किया था। उपग्रह और डिस्कॉम डेटा १९५ मेगावाट (३९%) की पुष्टि करते हैं। नेट-मीटरिंग देरी के कारण ११% का अंतर है और यह लक्ष्य AT RISK स्थिति में है।',
+    aiExplanationMr:
+      'मुंबईने या टप्प्यापर्यंत २५० मेगावॅट (५०%) छतावरील सौर ऊर्जेचे आश्वासन दिले होते. प्रत्यक्ष पाहणीत १९५ मेगावॅट (३९%) स्थापित झाल्याचे निष्पन्न झाले. नेट-मीटरिंग प्रक्रियेतील विलंबाने ११% ची तूट निर्माण झाली आहे.',
+    recommendedNextActions: [
+      'Mandate automated DISCOM net-metering API approvals within 15 working days.',
+      'Roll out municipal property tax rebates for residential solar societies.',
+    ],
+    auditedBy: 'Deterministic Climate Audit Engine v2.4 (Scientific Integrity Matrix)',
+    auditHash: 'sha256:5e1f7a8b92c043d671894a2b1045cde890f1245678a90123bc456def789012ab',
+    isSimulated: true,
+  },
+
+  // Audit for com-mum-exp-04 (Clean Cooking Access)
+  {
+    id: 'aud-mum-04',
+    commitmentId: 'com-mum-exp-04',
+    commitmentTitle: 'Clean Cooking Transition Programme in Vulnerable Wards',
+    cityId: 'mumbai',
+    auditDate: '2024-09-15T11:20:00Z',
+    outcome: 'PARTIALLY_SUPPORTED',
+    progressStatus: 'AT_RISK',
+    sourceAgreement: 'CORROBORATED',
+    evidenceQualityScore: 85,
+    progressPercentage: 47.5,
+    plannedProgressPercentage: 55.0,
+    reportingOverstatementPercentage: 2.5,
+    gapPercentage: 7.5,
+    observationsExaminedCount: 2,
+    supportingObservationsCount: 2,
+    contradictoryObservationsCount: 0,
+    provenance: [
+      {
+        sourceId: 'obs-mum-cook-sns',
+        sourceName: 'IOCL & HPCL Active Smart Gas Cylinder Refill & Piped Gas Registry',
+        sourceType: 'MUNICIPAL_OPERATIONAL_DATA',
+        observationDate: '2024-09-02',
+        sampleCount: 47000,
+        coverageArea: 'Dharavi, Govandi, Kurla & Mankhurd Informal Wards',
+        reliabilityWeight: 0.93,
+        notes: 'Electronic subsidy disbursement ledger tracking recurring cylinder refills.',
+      },
+      {
+        sourceId: 'obs-mum-cook-srv',
+        sourceName: 'TISS & NEERI Vulnerable Settlement Indoor Air Quality & Household Survey',
+        sourceType: 'INDEPENDENT_RESEARCH_STUDY',
+        observationDate: '2024-09-05',
+        sampleCount: 4200,
+        coverageArea: 'M-East & G-North Ward Informal Settlements',
+        reliabilityWeight: 0.91,
+        notes: 'Door-to-door survey across 4,200 households evaluating primary kitchen fuel and particulate monitors.',
+      },
+    ],
+    supportingEvidenceSummary: [
+      'Disbursement registries confirm 47,000 households actively refilling clean LPG cylinders.',
+      'Field air surveys document a 48,000 household transition rate with measurable indoor particulate reduction.',
+    ],
+    contradictoryEvidenceSummary: [
+      'City reported 50.0% transition vs 47.5% verified (mild 2.5% overstatement).',
+      'The 7.5 percentage point gap vs the 55.0% milestone places this target in AT_RISK status.',
+    ],
+    missingEvidenceNotes: [
+      'Kerosene secondary fuel stacking practices in unnotified chawls require ongoing ground monitoring.',
+    ],
+    deterministicAuditRulesApplied: [
+      'EXCEL_RULE_PROGRESS_GAP: Planned (55%) - Verified (47.5%) = 7.5% Gap (5% < Gap <= 15%) -> AT_RISK.',
+      'EXCEL_RULE_OVERSTATEMENT: Reported (50%) - Verified (47.5%) = 2.5% Overstatement.',
+    ],
+    confidenceLimitations: [
+      'Survey sampling covers 12 representative slum pockets and relies on self-reported secondary fuel use.',
+    ],
+    aiGeneratedCitizenExplanation:
+      'The city promised clean cooking transitions for 55,000 informal settlement households by now. Independent delivery logs and survey data confirm 47,500 families have transitioned, keeping this commitment close to schedule with a minor 7.5% gap.',
+    aiExplanationHi:
+      'शहर ने अब तक ५५,००० परिवारों को स्वच्छ रसोई ईंधन से जोड़ने का वादा किया था। स्वतंत्र रिकॉर्ड ४७,५०० परिवारों के संक्रमण की पुष्टि करते हैं, जिसमें ७.५% का मामूली अंतर है।',
+    aiExplanationMr:
+      'शहराने आतापर्यंत ५५,००० कुटुंबांना धूरमुक्त इंधन पुरवण्याचे उद्दिष्ट ठेवले होते. प्रत्यक्ष पाहणीत ४७,५०० कुटुंबे स्वच्छ इंधनाकडे वळल्याचे स्पष्ट झाले असून ७.५% चा फरक आहे.',
+    recommendedNextActions: [
+      'Establish community cylinder refill micro-depots inside dense chawls to reduce transport friction.',
+      'Extend municipal electricity subsidy for induction cooktops during monsoon months.',
+    ],
+    auditedBy: 'Deterministic Climate Audit Engine v2.4 (Scientific Integrity Matrix)',
+    auditHash: 'sha256:8a9b0c1d2e3f4a5b6c7d8e9f0123456789abcdef0123456789abcdef01234567',
+    isSimulated: true,
+  },
+
+  // Audit for com-mum-exp-05 (Green cover & Mangrove Buffer Ward K-East - Potential Discrepancy)
   {
     id: 'aud-mum-05',
     commitmentId: 'com-mum-exp-05',
-    commitmentTitle: 'Green Cover Expansion in Ward K-East (+4% Canopy Gain)',
+    commitmentTitle: 'Green Cover & Mangrove Buffer Expansion in Ward K-East (+4% Canopy Gain)',
     cityId: 'mumbai',
     auditDate: '2024-10-28T15:10:00Z',
     outcome: 'POTENTIAL_DISCREPANCY',
@@ -706,7 +1010,7 @@ export const DEMO_AUDITS: AuditRecord[] = [
         sourceType: 'SATELLITE_SENTINEL_2',
         observationDate: '2024-10-10',
         sampleCount: 18400,
-        coverageArea: 'Ward K-East (Andheri East)',
+        coverageArea: 'Ward K-East (Andheri East & MIDC)',
         reliabilityWeight: 0.94,
         notes: 'Atmospherically corrected surface reflectance at 10m resolution with cloud masking.',
       },
@@ -738,7 +1042,7 @@ export const DEMO_AUDITS: AuditRecord[] = [
       'RULE_CANOPY_SURVIVAL: Satellite and drone surveys corroborate that sapling survival is below 22%.',
     ],
     confidenceLimitations: [
-      'NDVI detects leaf chlorophyll absorption; newly planted micro-saplings under 1m tall require high-resolution UAV validation.',
+      'Scientific Limitation: NDVI detects canopy photosynthetic activity and leaf chlorophyll absorption; newly planted micro-saplings require UAV validation.',
     ],
     aiGeneratedCitizenExplanation:
       'The city reported that it had achieved 50% of its green canopy target in Ward K-East (Andheri East). However, independent satellite imagery and drone surveys reveal that actual green cover has only progressed 13.5%. Most of the 45,000 claimed saplings died due to neglect, creating a major discrepancy.',
@@ -752,7 +1056,75 @@ export const DEMO_AUDITS: AuditRecord[] = [
       'Enforce municipal tree officer accountability under the Maharashtra Urban Areas Protection and Preservation of Trees Act.',
     ],
     auditedBy: 'Deterministic Climate Audit Engine v2.4 (Scientific Integrity Matrix)',
-    auditHash: '0x992b41f7e029c5a1104e76d3',
+    auditHash: 'sha256:992b41f7e029c5a1104e76d389a01f4c6e78b9012d45e67a8b9c012345ef6789',
+    isSimulated: true,
+  },
+
+  // Audit for com-mum-exp-06 (Stormwater Drainage Upgrades)
+  {
+    id: 'aud-mum-06',
+    commitmentId: 'com-mum-exp-06',
+    commitmentTitle: 'Arterial Stormwater Drainage Upgrades in Low-Lying Wards',
+    cityId: 'mumbai',
+    auditDate: '2024-10-10T12:00:00Z',
+    outcome: 'SUPPORTED',
+    progressStatus: 'ON_TRACK',
+    sourceAgreement: 'CORROBORATED',
+    evidenceQualityScore: 92,
+    progressPercentage: 36.5,
+    plannedProgressPercentage: 40.0,
+    reportingOverstatementPercentage: 1.5,
+    gapPercentage: 3.5,
+    observationsExaminedCount: 2,
+    supportingObservationsCount: 2,
+    contradictoryObservationsCount: 0,
+    provenance: [
+      {
+        sourceId: 'obs-mum-swd-sat',
+        sourceName: 'Sentinel-2 & High-Res Radar Surface Inundation SAR Mapping',
+        sourceType: 'SATELLITE_SENTINEL_2',
+        observationDate: '2024-10-02',
+        sampleCount: 8800,
+        coverageArea: 'Mithi River Basin & Gandhi Market Drainage Basins',
+        reliabilityWeight: 0.89,
+        notes: 'Multi-temporal synthetic aperture radar (SAR) backscatter analysis identifying reinforced channel embankments.',
+      },
+      {
+        sourceId: 'obs-mum-swd-sns',
+        sourceName: 'BMC Automated SCADA Ultrasonic Flow & Level Telemetry Network',
+        sourceType: 'GROUND_SENSOR_CPCB',
+        observationDate: '2024-10-04',
+        sampleCount: 1440,
+        coverageArea: 'Arterial Nullah Discharge Outfalls (24 Monitoring Points)',
+        reliabilityWeight: 0.94,
+        notes: 'Continuous ultrasonic transit-time level sensors monitoring flood peak discharge capacity.',
+      },
+    ],
+    supportingEvidenceSummary: [
+      'SAR radar backscatter confirms 36% completed arterial channelization along Mithi and arterial nullahs.',
+      'SCADA telemetry confirms 37% operational flow capacity achieved, matching verified progress of 36.5%.',
+    ],
+    contradictoryEvidenceSummary: [],
+    missingEvidenceNotes: [],
+    deterministicAuditRulesApplied: [
+      'EXCEL_RULE_PROGRESS_GAP: Planned (40%) - Verified (36.5%) = 3.5% Gap <= 5.0% threshold -> ON_TRACK.',
+      'EXCEL_RULE_SUPPORTED: Overstatement (1.5%) <= 5.0% and Gap <= 5.0% -> SUPPORTED.',
+    ],
+    confidenceLimitations: [
+      'Subsurface enclosed box drains cannot be directly imaged via optical or radar Earth observation.',
+    ],
+    aiGeneratedCitizenExplanation:
+      'The city is on track for arterial stormwater drainage upgrades. Independent radar mapping and ultrasonic flow sensors confirm 36.5% completed upgrades against the 40% planned target, showing reliable execution without major reporting overstatements.',
+    aiExplanationHi:
+      'शहर मुख्य बरसाती नालों के सुधार के लिए सही रास्ते पर है। स्वतंत्र रडार और सेंसर डेटा पुष्टि करते हैं कि ४०% लक्ष्य के मुकाबले ३६.५% काम पूरा हो चुका है।',
+    aiExplanationMr:
+      'शहरातील मुख्य पर्जन्य जलवाहिन्यांचे रुंदीकरण ठरलेल्या वेळेत सुरू आहे. रडार आणि सेन्सर नोंदींवरून ४०% नियोजित उद्दिष्टापैकी ३६.५% काम पूर्ण झाल्याची पुष्टी मिळते.',
+    recommendedNextActions: [
+      'Maintain automated satellite change-detection alarms to monitor silt buildup ahead of pre-monsoon desilting drives.',
+      'Publish real-time SCADA nullah water levels on citizen warning portals.',
+    ],
+    auditedBy: 'Deterministic Climate Audit Engine v2.4 (Scientific Integrity Matrix)',
+    auditHash: 'sha256:a1b2c3d4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef0',
     isSimulated: true,
   },
 ];

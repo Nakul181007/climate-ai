@@ -96,7 +96,7 @@ export default function AuditHistoryPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[11px] font-bold uppercase tracking-wider text-forest-900 bg-forest-50 px-2.5 py-0.5 rounded border border-forest-200/80">
-              Immutable Verification Ledger
+              Tamper-Evident SHA-256 Verification Ledger
             </span>
             <span className="text-xs text-charcoal-400 font-mono">
               {enrichedAudits.length} Audits On Record
@@ -106,7 +106,7 @@ export default function AuditHistoryPage() {
             Climate Audit History &bull; {selectedCity.name}
           </h1>
           <p className="text-xs text-charcoal-600 mt-1 max-w-3xl">
-            Cryptographically attributed audit trail preserving deterministic reasoning, Earth observation versions, gap calculations, and statutory recommendations.
+            Tamper-evident audit trail preserving deterministic reasoning, Earth observation versions, gap calculations, and statutory recommendations.
           </p>
         </div>
 
@@ -171,8 +171,11 @@ export default function AuditHistoryPage() {
                       <span className="font-bold text-charcoal-900 block text-xs">
                         {formatDate(a.auditDate)}
                       </span>
-                      <span className="text-[10px] text-charcoal-400 truncate block max-w-[140px]">
-                        {a.auditHash || a.id}
+                      <span
+                        className="text-[10px] text-charcoal-500 font-mono truncate block max-w-[150px] cursor-help"
+                        title={a.auditHash || a.id}
+                      >
+                        {a.auditHash ? `${a.auditHash.substring(0, 19)}...` : a.id}
                       </span>
                     </td>
 
