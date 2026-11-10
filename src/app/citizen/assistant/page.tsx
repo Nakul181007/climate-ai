@@ -37,11 +37,28 @@ export default function AiAssistantPage() {
       id: 'msg-welcome',
       sender: 'assistant',
       content: `Hello! I am your **ClimateAI Maharashtra Citizen Assistant** for **${selectedCity.name}**.\n\nI answer questions regarding statutory climate pledges, Copernicus Sentinel-2 satellite audits, and public transit targets using only verified empirical records. Every answer includes verifiable source citations.\n\nWhat would you like to investigate today?`,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      timestamp: '10:00 AM',
       citations: [
         { source: selectedCity.climateActionPlanName, type: 'Statutory Policy Plan' },
         { source: 'Copernicus Sentinel-2 Level-2A', type: 'Satellite Remote Sensing' },
         { source: 'Deterministic Audit Matrix v2.4', type: 'Mathematical Engine' },
+      ],
+    },
+    {
+      id: 'msg-sample-q',
+      sender: 'user',
+      content: 'Why was Ward K-East green cover marked as a discrepancy?',
+      timestamp: '10:02 AM',
+    },
+    {
+      id: 'msg-sample-a',
+      sender: 'assistant',
+      content: `**Ward K-East (Andheri East) Green Canopy Discrepancy [Audit com-mum-exp-05]:**\n\n- **Official City Claim [MCAP Page 74]:** Municipal reports claimed 50% progress achieved via planting 45,000 tree saplings in industrial buffer zones.\n- **Independent Earth Observation:** Copernicus **Sentinel-2 Level-2A NDVI [Obs 2024-10-10]** and IIT Bombay drone surveys verified only **13.5% actual canopy progress**.\n- **The Discrepancy:** A reporting overstatement of **+36.5 percentage points** was detected. Over 78% of saplings withered due to post-monsoon irrigation neglect and MIDC soil contamination.\n- **Action Taken:** Flagged as **POTENTIAL DISCREPANCY** under the Scientific Integrity Matrix, triggering automated contractor payment holds.`,
+      timestamp: '10:02 AM',
+      citations: [
+        { source: 'Copernicus Sentinel-2 Level-2A NDVI Index', type: 'Satellite Observation' },
+        { source: 'IIT Bombay & NEERI Field Drone Photogrammetry', type: 'Independent Ground Survey' },
+        { source: 'BMC K-East Ward Plantation Log', type: 'Municipal Operational Record' },
       ],
     },
   ]);
