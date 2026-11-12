@@ -145,7 +145,7 @@ export default function LandingGatewayPage() {
 
             <a
               href="/api/download"
-              download="ClimateAI_Maharashtra_Platform_Walkthrough.pdf"
+              download="ClimateAI_Maharashtra_Complete_Platform_Walkthrough.pdf"
               className="px-4 py-2.5 text-xs font-bold text-charcoal-700 bg-surface hover:bg-charcoal-50 border border-charcoal-200 rounded-xl shadow-subtle flex items-center gap-2 transition-all hover:scale-102"
             >
               <FileDown className="w-4 h-4 text-forest-700" />
