@@ -358,7 +358,7 @@ export default function AuditHistoryPage() {
 
                     <td className="py-3.5 px-3 text-right font-mono">
                       <span className={a.reportingOverstatementPercentage > 10 ? 'text-rose-700 font-bold' : 'text-charcoal-600'}>
-                        +{a.reportingOverstatementPercentage}%
+                        +{a.reportingOverstatementPercentage} pp
                       </span>
                     </td>
 

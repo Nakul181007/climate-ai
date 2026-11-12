@@ -324,7 +324,7 @@ export default function CommitmentDirectoryPage() {
                                 : 'text-charcoal-600'
                             }`}
                           >
-                            {c.reportingOverstatement > 0 ? `+${overstatementPct}%` : `${overstatementPct}%`}
+                            {c.reportingOverstatement > 0 ? `+${overstatementPct} pp` : `${overstatementPct} pp`}
                           </span>
                         </td>
                         <td className="py-3.5 px-3 text-right font-mono">

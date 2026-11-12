@@ -259,7 +259,7 @@ export default function EvidenceExplorerPage() {
                     <div>
                       <span className="text-[10px] text-charcoal-400 uppercase block">Empirical Reading</span>
                       <span className="text-base font-extrabold text-forest-950">
-                        {obs.measuredValue} <span className="text-xs font-semibold text-charcoal-600">{obs.unit}</span>
+                        {obs.measuredValue}{obs.unit.startsWith('%') ? '' : ' '}<span className="text-xs font-semibold text-charcoal-600">{obs.unit}</span>
                       </span>
                     </div>
 

@@ -97,7 +97,7 @@ export default function AdminDashboardPage() {
                   Critical Discrepancy Detected:
                 </span>
                 <span className="text-xs font-semibold text-rose-800">
-                  {criticalAlert.title}
+                  {criticalAlert.title.replace('% Overstatement', ' pp Overstatement')}
                 </span>
               </div>
               <p className="text-xs text-rose-700 mt-0.5 leading-snug">
@@ -164,11 +164,14 @@ export default function AdminDashboardPage() {
                 Self-Reported vs. Verified
               </span>
             </div>
-            <div className="flex items-baseline gap-2">
+            <div className="flex items-baseline gap-1.5">
               <span className="text-4xl font-extrabold text-amber-800 font-mono tracking-tight">
-                +{stats.avgReportingOverstatementPct} pp
+                +{stats.avgReportingOverstatementPct}
               </span>
-              <span className="text-xs text-amber-700 font-medium">
+              <span className="text-sm font-bold text-amber-900/80 font-mono">
+                pp
+              </span>
+              <span className="text-xs text-amber-700 font-medium ml-1">
                 divergence index
               </span>
             </div>

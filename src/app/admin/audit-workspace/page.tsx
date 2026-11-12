@@ -309,7 +309,7 @@ function AuditWorkspaceContent() {
                     : 'text-charcoal-800'
                 }`}
               >
-                +{ (activeCommitment.reportingOverstatement * 100).toFixed(1) }%
+                +{ (activeCommitment.reportingOverstatement * 100).toFixed(1) } pp
               </span>
             </div>
 

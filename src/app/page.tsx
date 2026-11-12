@@ -178,7 +178,7 @@ export default function LandingGatewayPage() {
               <div className="space-y-2.5 text-xs text-charcoal-700 mb-8 border-t border-charcoal-100 pt-4">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Automated policy PDF commitment extraction via Gemini 3.8 Flash</span>
+                  <span>Automated policy PDF commitment extraction via Gemini Flash</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -357,7 +357,7 @@ export default function LandingGatewayPage() {
             <span>&bull; Hackathon Prototype Edition 2026</span>
           </div>
           <div className="text-center sm:text-right text-[11px]">
-            Strict adherence to Scientific Integrity Protocol &bull; Deterministic Auditing &bull; Gemini 3.8 Flash
+            Strict adherence to Scientific Integrity Protocol &bull; Deterministic Auditing &bull; Gemini Flash
           </div>
         </div>
       </footer>
