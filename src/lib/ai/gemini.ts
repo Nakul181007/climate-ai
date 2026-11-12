@@ -43,14 +43,29 @@ export async function extractCommitmentsWithGemini(
   documentText: string,
   documentName: string,
   cityId: CityId
-): Promise<{ commitments: ExtractedCommitmentPayload[]; isAiGenerated: boolean; modelUsed: string }> {
+): Promise<{
+  commitments: ExtractedCommitmentPayload[];
+  isAiGenerated: boolean;
+  modelUsed: string;
+  extractionNotice?: string;
+  extractionError?: string;
+}> {
+  if (!documentText || documentText.trim().length < 50) {
+    return {
+      commitments: [],
+      isAiGenerated: false,
+      modelUsed: 'deterministic-policy-engine-v2.4 (Demo Mode)',
+      extractionError: 'Insufficient text extracted from document (< 50 characters).',
+    };
+  }
+
   const apiKey = process.env.GEMINI_API_KEY;
 
   if (apiKey && apiKey !== 'your_gemini_api_key_here') {
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({
-        model: 'gemini-1.5-flash', // Using current stable Gemini Flash model
+        model: 'gemini-1.5-flash',
         generationConfig: {
           temperature: 0.1,
           responseMimeType: 'application/json',
@@ -83,7 +98,36 @@ Extract all measurable statutory commitments into a structured JSON array.`;
     }
   }
 
-  // Demonstration Fallback Extractor (Used when API key is missing or for instant hackathon walkthrough)
+  // Check if document text contains recognizable climate and environmental policy keywords
+  const lower = documentText.toLowerCase();
+  const hasClimateKeywords =
+    lower.includes('climate') ||
+    lower.includes('mcap') ||
+    lower.includes('pcap') ||
+    lower.includes('transport') ||
+    lower.includes('solar') ||
+    lower.includes('mangrove') ||
+    lower.includes('tree') ||
+    lower.includes('canopy') ||
+    lower.includes('waste') ||
+    lower.includes('emission') ||
+    lower.includes('bus') ||
+    lower.includes('energy') ||
+    lower.includes('waterbody') ||
+    lower.includes('drainage') ||
+    lower.includes('pccoe');
+
+  if (!hasClimateKeywords) {
+    return {
+      commitments: [],
+      isAiGenerated: false,
+      modelUsed: 'deterministic-policy-engine-v2.4 (Demo Mode)',
+      extractionNotice:
+        'Document text parsed successfully, but no measurable statutory climate commitments matching the indicator schema were identified in the text. Human review required.',
+    };
+  }
+
+  // Demonstration Policy Pattern Extractor (Used when API key is missing or for instant hackathon walkthrough)
   const simulatedExtracts: ExtractedCommitmentPayload[] =
     cityId === 'mumbai'
       ? [

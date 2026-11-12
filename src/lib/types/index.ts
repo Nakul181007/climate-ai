@@ -181,6 +181,8 @@ export interface AuditRecord {
   recommendedNextActions: string[];
   auditedBy: string;
   auditHash?: string;
+  previousHash?: string;
+  blockNumber?: number;
   isSimulated: boolean;
 }
 

@@ -36,7 +36,7 @@ export default function AiAssistantPage() {
     {
       id: 'msg-welcome',
       sender: 'assistant',
-      content: `Hello! I am your **ClimateAI Maharashtra Citizen Assistant** for **${selectedCity.name}**.\n\nI answer questions regarding statutory climate pledges, Copernicus Sentinel-2 satellite audits, and public transit targets using only verified empirical records. Every answer includes verifiable source citations.\n\nWhat would you like to investigate today?`,
+      content: `Hello! I am your **ClimateAI Maharashtra Demonstration Assistant** for **${selectedCity.name}**.\n\nI answer citizen inquiries regarding statutory climate pledges, Copernicus Sentinel-2 satellite audits, and public transit targets strictly grounded in verified registry records. Every response includes verifiable source citations.\n\n*Scientific Note:* Environmental indicators reflect observed spectral greenness (NDVI) and sensor telemetry rather than direct tree trunk counts, and missing data is classified as Inconclusive.\n\nWhat would you like to investigate today?`,
       timestamp: '10:00 AM',
       citations: [
         { source: selectedCity.climateActionPlanName, type: 'Statutory Policy Plan' },
@@ -150,7 +150,7 @@ export default function AiAssistantPage() {
 
         <div className="flex items-center gap-2 text-xs text-charcoal-500 font-mono self-start sm:self-auto">
           <ShieldCheck className="w-4 h-4 text-emerald-600" />
-          <span>Zero Hallucination Guardrails</span>
+          <span>Evidence-Grounded Guardrails & Citation Protocol</span>
         </div>
       </div>
 

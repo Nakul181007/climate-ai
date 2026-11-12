@@ -38,6 +38,13 @@ export default function PolicyIntelligencePage() {
   const [uploadedFileName, setUploadedFileName] = useState<string>('');
   const [selectedSample, setSelectedSample] = useState<string>('mcap');
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [extractionError, setExtractionError] = useState<string | null>(null);
+  const [extractionNotice, setExtractionNotice] = useState<string | null>(null);
+  const [extractionStats, setExtractionStats] = useState<{
+    pages: number;
+    chars: number;
+    sizeMb: number;
+  } | null>(null);
 
   // Sample Policy Scenarios
   const sampleDocuments = [
@@ -48,6 +55,7 @@ export default function PolicyIntelligencePage() {
       size: '14.8 MB',
       authority: 'Brihanmumbai Municipal Corporation (BMC)',
       cityId: 'mumbai',
+      sampleText: 'The Brihanmumbai Municipal Corporation shall maintain bi-weekly Sentinel satellite radiometric surveillance across 5,400 hectares of tidal wetlands in Thane Creek, and install floating and rooftop solar photovoltaic arrays across BMC water filtration facilities to reach 150 MW by 2027.',
     },
     {
       id: 'pcap',
@@ -56,17 +64,80 @@ export default function PolicyIntelligencePage() {
       size: '11.2 MB',
       authority: 'Pune Municipal Corporation (PMC)',
       cityId: 'pune',
+      sampleText: 'Pune Municipal Corporation shall establish 20 operational bio-methanation plants treating 100 tonnes per day of segregated municipal organic waste, preventing landfill methane emissions by 2026, and restore 44 km of riparian buffer along the Mula-Mutha confluence.',
     },
   ];
 
+  const handleFileUpload = async (file: File) => {
+    setIsExtracting(true);
+    setExtractionError(null);
+    setExtractionNotice(null);
+    setActiveStep(2);
+    setUploadedFileName(file.name);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('cityId', selectedCityId);
+
+      setActiveStep(3);
+      const res = await fetch('/api/policies/extract', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        setExtractionError(data.error || 'Failed to extract text from the uploaded document.');
+        setExtractedStaging([]);
+        setActiveStep(1);
+        return;
+      }
+
+      setExtractionStats({
+        pages: data.pageCount || 1,
+        chars: data.extractedCharacters || 0,
+        sizeMb: data.fileSizeMb || 0,
+      });
+
+      if (data.extractionNotice) {
+        setExtractionNotice(data.extractionNotice);
+      }
+
+      if (data.extractedCommitments && data.extractedCommitments.length > 0) {
+        const stagedWithIds = data.extractedCommitments.map(
+          (c: ExtractedCommitmentPayload, index: number) => ({
+            ...c,
+            id: `ext-${Date.now()}-${index}`,
+            status: 'PENDING' as const,
+          })
+        );
+        setExtractedStaging(stagedWithIds);
+        setModelMeta(data.modelUsed || 'Gemini 3.8 Flash');
+        setActiveStep(4);
+      } else {
+        setExtractedStaging([]);
+        setActiveStep(2);
+      }
+    } catch (err: any) {
+      console.error('Failed to upload and extract document:', err);
+      setExtractionError(`Network error while uploading: ${err.message || 'Server did not respond'}`);
+      setActiveStep(1);
+    } finally {
+      setIsExtracting(false);
+    }
+  };
+
   const handleRunExtraction = async (docName: string, textSample?: string) => {
     setIsExtracting(true);
+    setExtractionError(null);
+    setExtractionNotice(null);
     setActiveStep(2);
     setUploadedFileName(docName);
 
     try {
-      // Simulate slight processing delay for realistic UX
-      await new Promise((resolve) => setTimeout(resolve, 1200));
+      await new Promise((resolve) => setTimeout(resolve, 800));
       setActiveStep(3);
 
       const res = await fetch('/api/policies/extract', {
@@ -89,11 +160,15 @@ export default function PolicyIntelligencePage() {
           })
         );
         setExtractedStaging(stagedWithIds);
-        setModelMeta(data.modelUsed || 'Gemini 3.8 Flash');
+        setModelMeta(data.modelUsed || 'Demonstration Extractor');
         setActiveStep(4);
+      } else if (data.extractionNotice) {
+        setExtractionNotice(data.extractionNotice);
+        setExtractedStaging([]);
       }
     } catch (err) {
       console.error('Failed to extract policy text:', err);
+      setExtractionError('Failed to complete policy extraction.');
     } finally {
       setIsExtracting(false);
     }
@@ -231,13 +306,13 @@ export default function PolicyIntelligencePage() {
 
             <input
               type="file"
-              accept=".pdf"
+              accept=".pdf,.txt"
               id="policy-file-input"
               className="hidden"
               onChange={(e) => {
                 const file = e.target.files?.[0];
                 if (file) {
-                  handleRunExtraction(file.name);
+                  handleFileUpload(file);
                 }
               }}
             />
@@ -246,9 +321,40 @@ export default function PolicyIntelligencePage() {
               htmlFor="policy-file-input"
               className="mt-4 px-4 py-2 rounded-lg bg-surface border border-charcoal-200 hover:bg-charcoal-50 text-xs font-semibold text-charcoal-800 shadow-subtle cursor-pointer"
             >
-              Select PDF File from Computer
+              Select PDF / TXT File from Computer
             </label>
           </div>
+
+          {/* Extraction Error Notice */}
+          {extractionError && (
+            <div className="p-3.5 rounded-xl border border-rose-300 bg-rose-50 text-rose-900 text-xs flex items-start gap-2.5">
+              <AlertCircle className="w-4 h-4 text-rose-700 shrink-0 mt-0.5" />
+              <div>
+                <strong className="block text-rose-950">Document Text Extraction Incomplete:</strong>
+                {extractionError}
+              </div>
+            </div>
+          )}
+
+          {/* Extraction Notice (Empty or No Targets Found) */}
+          {extractionNotice && (
+            <div className="p-3.5 rounded-xl border border-amber-300 bg-amber-50 text-amber-900 text-xs flex items-start gap-2.5">
+              <Info className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+              <div>
+                <strong className="block text-amber-950">Extraction Finding:</strong>
+                {extractionNotice}
+              </div>
+            </div>
+          )}
+
+          {/* Extraction Stats Banner */}
+          {extractionStats && !extractionError && (
+            <div className="p-3 rounded-lg bg-charcoal-50 border border-charcoal-200 text-xs font-mono text-charcoal-700 flex items-center justify-between">
+              <span>Pages Parsed: <strong>{extractionStats.pages}</strong></span>
+              <span>Characters Extracted: <strong>{extractionStats.chars.toLocaleString()}</strong></span>
+              <span>File Size: <strong>{extractionStats.sizeMb} MB</strong></span>
+            </div>
+          )}
 
           <div className="flex items-center gap-2 text-[11px] text-charcoal-500 pt-2 border-t border-charcoal-100">
             <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -297,7 +403,7 @@ export default function PolicyIntelligencePage() {
           <button
             onClick={() => {
               const sample = sampleDocuments.find((s) => s.id === selectedSample);
-              if (sample) handleRunExtraction(sample.title);
+              if (sample) handleRunExtraction(sample.title, sample.sampleText);
             }}
             disabled={isExtracting}
             className="mt-5 w-full py-2.5 px-4 rounded-xl bg-forest-900 hover:bg-forest-800 text-white font-bold text-xs shadow-subtle flex items-center justify-center gap-2 transition-colors disabled:opacity-50"

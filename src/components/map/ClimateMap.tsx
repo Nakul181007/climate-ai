@@ -702,7 +702,7 @@ export function ClimateMap() {
         {climaticEffect !== 'none' && (
           <div className="flex items-center gap-2 text-[11px] text-emerald-300">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            <span className="font-mono">Live Weather Telemetry Active</span>
+            <span className="font-mono">Simulated Climatic Layer Active</span>
           </div>
         )}
       </div>

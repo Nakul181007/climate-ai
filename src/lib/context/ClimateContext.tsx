@@ -187,10 +187,17 @@ export function ClimateProvider({ children }: { children: React.ReactNode }) {
       (o) => o.commitmentId === commitmentId
     );
 
+    const cityAudits = audits.filter((a) => a.cityId === targetCommitment.cityId);
+    const latestAudit = cityAudits[cityAudits.length - 1];
+    const previousHash = latestAudit?.auditHash || '0000000000000000000000000000000000000000000000000000000000000000';
+    const blockNumber = cityAudits.length + 1;
+
     const auditResult = evaluateDeterministicAudit({
       commitment: targetCommitment,
       observations: relevantObservations,
       cityId: targetCommitment.cityId,
+      previousHash,
+      blockNumber,
     });
 
     // Update commitments state with new audit status and progress

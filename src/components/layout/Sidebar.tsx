@@ -78,7 +78,7 @@ export function Sidebar() {
       name: 'Audit History',
       href: '/admin/audit-history',
       icon: History,
-      description: 'Immutable trail & report generation',
+      description: 'Tamper-evident trail & report generation',
     },
     {
       name: 'Recommendation Engine',

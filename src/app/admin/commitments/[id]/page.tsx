@@ -297,7 +297,7 @@ export default function CommitmentDetailPage() {
           </div>
         ) : (
           <div className="p-6 rounded-lg bg-charcoal-50 text-center text-xs text-charcoal-500">
-            No raw observation telemetry records attached. Run the audit workspace to retrieve live Copernicus & sensor feeds.
+            No raw observation telemetry records attached. Run the audit workspace to retrieve Copernicus & sensor telemetry.
           </div>
         )}
       </div>
