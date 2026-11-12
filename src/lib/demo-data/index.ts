@@ -826,7 +826,7 @@ export const DEMO_AUDITS: AuditRecord[] = [
       'Satellite imagery verifies bus parking footprint but cannot evaluate battery state-of-health without CAN-bus diagnostic logs.',
     ],
     aiGeneratedCitizenExplanation:
-      'BEST promised that 240 electric buses (60% milestone) would be operating by now, and official reports claimed 180 were in service. Independent satellite imaging and live GPS tracking reveal that only 120 buses (30%) are actually running on routes. 60 additional acquired buses remain stabled in depots waiting for high-voltage electricity connections.',
+      'BEST promised that 240 electric buses (60% milestone) would be operating by now, and official reports claimed 180 were in service. Independent satellite imaging and automated vehicle location (AVL) GPS logs reveal that only 120 buses (30%) are actually running on routes. 60 additional acquired buses remain stabled in depots waiting for high-voltage electricity connections.',
     aiExplanationHi:
       'बेस्ट ने अब तक २४० इलेक्ट्रिक बसें (६०% लक्ष्य) चलाने का वादा किया था और आधिकारिक रिपोर्ट में १८० बसों के चलने का दावा किया गया। हालांकि उपग्रह और जीपीएस ट्रैकिंग से पता चलता है कि केवल १२० बसें (३०%) ही सड़कों पर चल रही हैं। ६० बसें डिपो में बिजली कनेक्शन के इंतजार में खड़ी हैं।',
     aiExplanationMr:

@@ -156,7 +156,7 @@ Provide an evidence-grounded response with explicit source citations.`;
 - **City Claimed:** 45% (180 buses claimed acquired).
 - **Verified In Active Route Service:** **30% verified (120 active buses)** via BEST ITMS automated vehicle GPS tracking and Sentinel-2 depot charging footprint.
 - **Bottleneck Identified:** 60 buses are sitting idle in Wadala & Majas depots awaiting 33kV substation energisation from DISCOMs.
-- **Status:** **OFF TRACK** (30% gap vs plan), with an overstatement of +15%.`;
+- **Status:** **OFF TRACK** (30% gap vs plan), with an overstatement of +15.0 percentage points.`;
       citations.push({ source: 'BEST ITMS Automated Vehicle Location (AVL) GPS', type: 'Municipal Telemetry' });
       citations.push({ source: 'Sentinel-2 BOA Depot Solar Canopy Analysis', type: 'Satellite Observation' });
       citations.push({ source: 'BEST Undertaking Operational Log', type: 'Agency Record' });

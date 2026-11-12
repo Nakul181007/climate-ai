@@ -994,7 +994,7 @@ export function ClimateMap() {
                       Locality Telemetry
                     </span>
                     <span className="px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 font-mono font-bold text-[9px] border border-amber-300">
-                      {activeLocality.isSimulated ? 'SIMULATED DEMONSTRATION RECORD' : 'LIVE OBSERVATION RECORD'}
+                      {activeLocality.isSimulated ? 'SIMULATED DEMONSTRATION RECORD' : 'CALIBRATED OBSERVATION RECORD'}
                     </span>
                   </div>
                   <h3 className="text-base font-bold text-forest-950 mt-0.5">
@@ -1063,7 +1063,7 @@ export function ClimateMap() {
                 Explore Climatic & Observation Layers
               </h4>
               <p className="text-xs text-charcoal-500 mt-1 max-w-xs leading-relaxed">
-                Click any colored locality pin or pulsing weather zone on the map to inspect live Doppler rain radars, urban heat anomalies, or canopy cooling buffers.
+                Click any colored locality pin or pulsing weather zone on the map to inspect calibrated Doppler rain radar models, urban heat anomalies, or canopy cooling buffers.
               </p>
               <div className="mt-4 flex flex-col gap-1.5 text-[11px] text-charcoal-600 bg-charcoal-50 p-3 rounded-lg border border-charcoal-100 w-full text-left">
                 <span className="font-bold text-charcoal-800">Active Atmospheric Layers:</span>

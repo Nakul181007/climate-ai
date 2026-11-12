@@ -199,7 +199,7 @@ export default function EnvironmentalIntelligencePage() {
             </div>
           </div>
           <p className="text-xs text-charcoal-600 leading-relaxed mt-2">
-            Real-time beta-attenuation monitors tracking PM2.5, PM10, NO2, and SO2 across 15 Mumbai stations and 9 Pune stations. Serves as ground-truth corroboration for municipal dust abatement and EV fleet impact.
+            Calibrated continuous ambient monitors tracking PM2.5, PM10, NO2, and SO2 across 15 Mumbai stations and 9 Pune stations in official demonstration snapshots. Serves as ground-truth corroboration for municipal dust abatement and EV fleet impact.
           </p>
         </div>
 

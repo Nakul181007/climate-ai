@@ -195,7 +195,7 @@ export default function CitizenTrackerPage() {
                   <div className="mt-2.5 p-2 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-center gap-2">
                     <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                     <span>
-                      <strong>High Divergence:</strong> Official reports overstate verified progress by <strong>+{overstatementPct}%</strong>.
+                      <strong>High Divergence:</strong> Official reports overstate verified progress by <strong>+{overstatementPct} percentage points</strong>.
                     </span>
                   </div>
                 )}
