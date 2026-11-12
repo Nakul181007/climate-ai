@@ -16,6 +16,7 @@ import {
   CheckCircle,
   AlertTriangle,
   X,
+  Menu,
   FileDown,
 } from 'lucide-react';
 import { useClimate, Language } from '@/lib/context/ClimateContext';
@@ -35,6 +36,8 @@ export function Navbar() {
     cityAlerts,
     language,
     setLanguage,
+    isMobileNavOpen,
+    setIsMobileNavOpen,
   } = useClimate();
 
   const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
@@ -71,25 +74,41 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-surface/95 backdrop-blur-md border-b border-charcoal-200 shadow-subtle">
       <DemoNotice />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-3">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 gap-2 sm:gap-3">
           
-          {/* Brand Logo & Tagline */}
-          <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-lg bg-forest-900 border border-forest-800 flex items-center justify-center shadow-subtle group-hover:bg-forest-800 transition-colors">
-                <ShieldCheck className="w-5 h-5 text-emerald-400" />
+          {/* Brand Logo, Hamburger & Tagline */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Mobile Hamburger Menu Toggle */}
+            <button
+              type="button"
+              onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
+              className="p-1.5 -ml-1 rounded-lg text-charcoal-700 hover:text-charcoal-950 hover:bg-charcoal-100 transition-colors lg:hidden shrink-0 focus:outline-none focus:ring-2 focus:ring-forest-800/20"
+              aria-label={isMobileNavOpen ? 'Close navigation drawer' : 'Open navigation drawer'}
+              aria-expanded={isMobileNavOpen}
+              aria-controls="mobile-navigation-drawer"
+            >
+              {isMobileNavOpen ? (
+                <X className="w-5 h-5 text-forest-950" />
+              ) : (
+                <Menu className="w-5 h-5 text-forest-950" />
+              )}
+            </button>
+
+            <Link href="/" className="flex items-center gap-2 group shrink-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-forest-900 border border-forest-800 flex items-center justify-center shadow-subtle group-hover:bg-forest-800 transition-colors shrink-0">
+                <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <span className="font-bold text-lg tracking-tight text-forest-950 font-sans">
+                  <span className="font-bold text-base sm:text-lg tracking-tight text-forest-950 font-sans">
                     ClimateAI
                   </span>
-                  <span className="text-xs font-semibold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 uppercase tracking-wider">
+                  <span className="text-xs font-semibold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 uppercase tracking-wider hidden sm:inline">
                     Maharashtra
                   </span>
                 </div>
-                <p className="text-[11px] text-charcoal-500 font-medium hidden sm:block">
+                <p className="text-[11px] text-charcoal-500 font-medium hidden lg:block">
                   From Climate Commitments to Verified Climate Action
                 </p>
               </div>
@@ -97,7 +116,7 @@ export function Navbar() {
           </div>
 
           {/* Center Controls: City Selector & Role Switcher */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 sm:gap-2.5">
             
             {/* City Selector Dropdown */}
             <div className="relative">
@@ -146,8 +165,8 @@ export function Navbar() {
               )}
             </div>
 
-            {/* Portal Role Toggle Switcher */}
-            <div className="flex items-center bg-charcoal-100/90 p-1 rounded-lg border border-charcoal-200/80">
+            {/* Portal Role Toggle Switcher (Desktop/Tablet) */}
+            <div className="hidden sm:flex items-center bg-charcoal-100/90 p-1 rounded-lg border border-charcoal-200/80">
               <button
                 onClick={() => handleRoleToggle('admin')}
                 className={`flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-md transition-all ${
@@ -157,8 +176,8 @@ export function Navbar() {
                 }`}
               >
                 <Building2 className="w-3.5 h-3.5 text-forest-700" />
-                <span className="hidden sm:inline">Government Portal</span>
-                <span className="sm:hidden">Govt</span>
+                <span className="hidden md:inline">Government Portal</span>
+                <span className="md:hidden">Govt</span>
               </button>
               <button
                 onClick={() => handleRoleToggle('citizen')}
@@ -169,24 +188,24 @@ export function Navbar() {
                 }`}
               >
                 <Users className="w-3.5 h-3.5 text-emerald-600" />
-                <span className="hidden sm:inline">Citizen Portal</span>
-                <span className="sm:hidden">Public</span>
+                <span className="hidden md:inline">Citizen Portal</span>
+                <span className="md:hidden">Public</span>
               </button>
             </div>
           </div>
 
           {/* Right Controls: Download PDF, Language Selector, Alerts & User Profile */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             
             {/* Download Walkthrough PDF Button */}
             <a
               href="/api/download"
               download="ClimateAI_Maharashtra_Platform_Walkthrough.pdf"
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-forest-900 hover:bg-forest-950 text-white shadow-subtle border border-forest-800 transition-all hover:scale-102"
+              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-forest-900 hover:bg-forest-950 text-white shadow-subtle border border-forest-800 transition-all hover:scale-102"
               title="Download Platform Walkthrough PDF"
             >
               <FileDown className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="hidden sm:inline">Download PDF</span>
+              <span className="hidden lg:inline">Download PDF</span>
             </a>
 
             {/* Multi-language Toggle (English, Hindi, Marathi) */}

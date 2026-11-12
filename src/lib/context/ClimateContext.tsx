@@ -68,6 +68,8 @@ interface ClimateContextType {
   addPolicy: (policy: PolicyDocument) => void;
   executeAudit: (commitmentId: string) => AuditRecord;
   stats: ClimateStats;
+  isMobileNavOpen: boolean;
+  setIsMobileNavOpen: (val: boolean) => void;
 }
 
 const ClimateContext = createContext<ClimateContextType | undefined>(undefined);
@@ -77,6 +79,7 @@ export function ClimateProvider({ children }: { children: React.ReactNode }) {
   const [currentRole, setCurrentRole] = useState<'admin' | 'citizen'>('admin');
   const [isDemoMode, setIsDemoMode] = useState<boolean>(true);
   const [language, setLanguage] = useState<Language>('en');
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
 
   const [policies, setPolicies] = useState<PolicyDocument[]>(DEMO_POLICIES);
   const [commitments, setCommitments] = useState<Commitment[]>(DEMO_COMMITMENTS);
@@ -250,6 +253,8 @@ export function ClimateProvider({ children }: { children: React.ReactNode }) {
         addPolicy,
         executeAudit,
         stats,
+        isMobileNavOpen,
+        setIsMobileNavOpen,
       }}
     >
       {children}
