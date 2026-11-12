@@ -171,8 +171,9 @@ export default function AuditHistoryPage() {
           {!tamperedBlockId ? (
             <button
               onClick={handleSimulateTamper}
-              className="px-3 py-2 text-xs font-semibold rounded-lg border border-rose-300 bg-rose-50 hover:bg-rose-100 text-rose-800 shadow-subtle flex items-center gap-1.5 transition-all"
-              title="Simulate unauthorized alteration of verified progress"
+              disabled={enrichedAudits.length === 0}
+              className="px-3 py-2 text-xs font-semibold rounded-lg border border-rose-300 bg-rose-50 hover:bg-rose-100 text-rose-800 shadow-subtle flex items-center gap-1.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              title={enrichedAudits.length === 0 ? "Requires existing audit records to simulate tampering" : "Simulate unauthorized alteration of verified progress"}
             >
               <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
               <span>Simulate Tampering</span>
@@ -401,8 +402,24 @@ export default function AuditHistoryPage() {
               })
             ) : (
                 <tr>
-                  <td colSpan={9} className="py-8 text-center text-charcoal-500">
-                    No historical audit logs found matching criteria.
+                  <td colSpan={9} className="py-12 px-4 text-center">
+                    <div className="w-10 h-10 rounded-xl bg-forest-50 border border-forest-200 text-forest-800 flex items-center justify-center mx-auto mb-3">
+                      <History className="w-5 h-5 text-forest-700" />
+                    </div>
+                    <h4 className="text-sm font-bold text-forest-950 mb-1">
+                      No Audit Records Logged for {selectedCity.name}
+                    </h4>
+                    <p className="text-xs text-charcoal-500 max-w-md mx-auto leading-relaxed mb-4">
+                      No statutory audit evaluations have been executed yet for this jurisdiction. Open the Audit Workspace to execute a deterministic evaluation against municipal targets.
+                    </p>
+                    <Link
+                      href="/admin/audit-workspace"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-forest-900 hover:bg-forest-800 text-white shadow-subtle transition-all"
+                    >
+                      <Cpu className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Launch Audit Workspace</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
                   </td>
                 </tr>
               )}

@@ -378,6 +378,10 @@ export default function CommitmentDirectoryPage() {
             </table>
           </div>
         </div>
+      ) : filteredCommitments.length === 0 ? (
+        <div className="card-enterprise p-12 text-center text-charcoal-500">
+          <p className="text-sm font-semibold">No commitments match the specified search and filter criteria.</p>
+        </div>
       ) : (
         /* Mode B: Editorial Card View */
         <div className="space-y-4">

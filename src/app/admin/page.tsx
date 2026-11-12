@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import Link from 'next/link';
 import {
   ShieldCheck,
@@ -34,6 +34,12 @@ export default function AdminDashboardPage() {
 
   const criticalAlert = cityAlerts.find((a) => a.severity === 'CRITICAL');
   const highAlert = cityAlerts.find((a) => a.severity === 'HIGH');
+
+  const highestOverstatement = useMemo(() => {
+    return [...cityCommitments]
+      .filter((c) => typeof c.reportingOverstatement === 'number' && c.reportingOverstatement > 0)
+      .sort((a, b) => b.reportingOverstatement - a.reportingOverstatement)[0];
+  }, [cityCommitments]);
 
   return (
     <div className="space-y-6">
@@ -172,7 +178,11 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="mt-4 pt-3 border-t border-charcoal-100 text-xs text-charcoal-500 flex items-center justify-between">
-            <span className="truncate">Highest in: Ward K-East (+36.5%)</span>
+            <span className="truncate">
+              {highestOverstatement
+                ? `Highest in: ${highestOverstatement.title.length > 28 ? highestOverstatement.title.substring(0, 26) + '...' : highestOverstatement.title} (+${(highestOverstatement.reportingOverstatement * 100).toFixed(1)}%)`
+                : 'No divergence reported'}
+            </span>
             <Link
               href="/admin/commitments"
               className="text-emerald-700 hover:text-emerald-800 font-semibold inline-flex items-center gap-0.5 shrink-0"

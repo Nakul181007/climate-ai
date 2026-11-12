@@ -51,3 +51,4 @@ for (let i = 0; i < views.length; i++) {
 }
 
 console.log('Finished capturing all views.');
+

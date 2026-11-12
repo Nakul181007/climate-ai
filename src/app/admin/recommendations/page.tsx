@@ -208,10 +208,47 @@ export default function RecommendationsPage() {
             </div>
           ))
         ) : (
-          <div className="card-enterprise p-12 text-center text-charcoal-500">
-            <h3 className="text-sm font-bold text-charcoal-800">
-              No recommendations found for this sector filter.
+          <div className="card-enterprise p-12 text-center max-w-xl mx-auto my-6 border-dashed border-charcoal-300">
+            <div className="w-12 h-12 rounded-xl bg-forest-50 border border-forest-200 text-forest-800 flex items-center justify-center mx-auto mb-4">
+              <TrendingUp className="w-6 h-6 text-forest-700" />
+            </div>
+            <h3 className="text-base font-bold text-forest-950 mb-1.5">
+              {sectorFilter !== 'all'
+                ? 'No Recommendations Matching Filter'
+                : `No Recommendations Cataloged for ${selectedCity.name}`}
             </h3>
+            <p className="text-xs text-charcoal-600 max-w-md mx-auto leading-relaxed mb-5">
+              {sectorFilter !== 'all'
+                ? `No ranked interventions exist under the "${sectorFilter}" category for ${selectedCity.name}. Clear the filter to view all available recommendations.`
+                : `Ranked corrective interventions are derived deterministically from completed audit runs and empirical gap analyses. Run a formal audit in the Audit Workspace to generate data-grounded intervention strategies for this jurisdiction.`}
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {sectorFilter !== 'all' ? (
+                <button
+                  onClick={() => setSectorFilter('all')}
+                  className="px-4 py-2 text-xs font-semibold rounded-lg bg-forest-900 text-white hover:bg-forest-800 shadow-subtle transition-all"
+                >
+                  Clear Sector Filter
+                </button>
+              ) : (
+                <>
+                  <Link
+                    href="/admin/audit-workspace"
+                    className="px-4 py-2 text-xs font-bold rounded-lg bg-forest-900 hover:bg-forest-800 text-white shadow-subtle flex items-center gap-1.5 transition-all"
+                  >
+                    <Cpu className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Go to Audit Workspace</span>
+                  </Link>
+                  <Link
+                    href="/admin/simulator"
+                    className="px-4 py-2 text-xs font-semibold rounded-lg border border-charcoal-200 bg-surface hover:bg-charcoal-50 text-charcoal-700 shadow-subtle flex items-center gap-1.5 transition-all"
+                  >
+                    <span>What-If Simulator</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         )}
       </div>

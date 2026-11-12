@@ -64,6 +64,16 @@ export default function EvidenceExplorerPage() {
 
   const filteredObservations = useMemo(() => {
     return DEMO_OBSERVATIONS.filter((obs) => {
+      // FIX 1: Filter observations according to the currently selected city and its associated commitments
+      const linkedCommitment = commitments.find((c) => c.id === obs.commitmentId);
+      const belongsToSelectedCity = linkedCommitment
+        ? linkedCommitment.cityId === selectedCity.id
+        : obs.commitmentId.includes(selectedCity.id === 'mumbai' ? 'mum' : 'pune');
+
+      if (!belongsToSelectedCity) {
+        return false;
+      }
+
       const matchesSearch =
         obs.sourceName.toLowerCase().includes(searchQuery.toLowerCase()) ||
         obs.geographicArea.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -77,7 +87,7 @@ export default function EvidenceExplorerPage() {
 
       return matchesSearch && matchesType && matchesIndicator && matchesReliability;
     });
-  }, [searchQuery, selectedSourceType, selectedIndicator, minReliability]);
+  }, [commitments, selectedCity.id, searchQuery, selectedSourceType, selectedIndicator, minReliability]);
 
   return (
     <div className="space-y-6">
@@ -190,102 +200,120 @@ export default function EvidenceExplorerPage() {
       </div>
 
       {/* Evidence Stream Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {filteredObservations.map((obs) => {
-          const linkedCommitment = commitments.find((c) => c.id === obs.commitmentId);
+      {filteredObservations.length === 0 ? (
+        <div className="card-enterprise p-12 text-center max-w-xl mx-auto my-6 border-dashed border-charcoal-300">
+          <div className="w-12 h-12 rounded-xl bg-forest-50 border border-forest-200 text-forest-800 flex items-center justify-center mx-auto mb-4">
+            <Database className="w-6 h-6 text-forest-700" />
+          </div>
+          <h3 className="text-base font-bold text-forest-950 mb-1.5">
+            No Empirical Evidence Records Cataloged for {selectedCity.name}
+          </h3>
+          <p className="text-xs text-charcoal-600 max-w-md mx-auto leading-relaxed mb-5">
+            No independent telemetry feeds (Sentinel-2 multispectral passes, ground CAAQMS stations, or municipal registries) are currently cataloged for this jurisdiction matching your active filters.
+          </p>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-xs font-medium">
+            <Info className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+            <span>Under Scientific Integrity rules, missing evidence is classified as unverified, never fabricated.</span>
+          </div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {filteredObservations.map((obs) => {
+            const linkedCommitment = commitments.find((c) => c.id === obs.commitmentId);
 
-          return (
-            <div
-              key={obs.id}
-              className="card-enterprise p-5 flex flex-col justify-between hover:border-charcoal-300 transition-all space-y-3"
-            >
-              <div>
-                
-                {/* Source Badge & Reliability */}
-                <div className="flex items-start justify-between gap-2 mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 rounded-md bg-forest-50 border border-forest-200 shrink-0">
-                      {getSourceIcon(obs.sourceType)}
+            return (
+              <div
+                key={obs.id}
+                className="card-enterprise p-5 flex flex-col justify-between hover:border-charcoal-300 transition-all space-y-3"
+              >
+                <div>
+                  
+                  {/* Source Badge & Reliability */}
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <div className="flex items-center gap-2">
+                      <div className="p-1.5 rounded-md bg-forest-50 border border-forest-200 shrink-0">
+                        {getSourceIcon(obs.sourceType)}
+                      </div>
+                      <div>
+                        <span className="text-[10px] uppercase font-bold tracking-wider text-charcoal-500 font-mono block">
+                          {getSourceTypeLabel(obs.sourceType)}
+                        </span>
+                        <h3 className="text-sm font-bold text-forest-950 leading-snug">
+                          {obs.sourceName}
+                        </h3>
+                      </div>
                     </div>
+
+                    <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 shrink-0">
+                      {obs.reliabilityScore}% Reliability
+                    </span>
+                  </div>
+
+                  {/* Measurement Highlight */}
+                  <div className="p-3 rounded-lg bg-background border border-charcoal-200 my-2.5 flex items-center justify-between font-mono">
                     <div>
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-charcoal-500 font-mono block">
-                        {getSourceTypeLabel(obs.sourceType)}
+                      <span className="text-[10px] text-charcoal-400 uppercase block">Empirical Reading</span>
+                      <span className="text-base font-extrabold text-forest-950">
+                        {obs.measuredValue} <span className="text-xs font-semibold text-charcoal-600">{obs.unit}</span>
                       </span>
-                      <h3 className="text-sm font-bold text-forest-950 leading-snug">
-                        {obs.sourceName}
-                      </h3>
+                    </div>
+
+                    <div className="text-right text-[11px] text-charcoal-500">
+                      <span className="block">Date: {obs.collectionDate}</span>
+                      <span className="text-[10px] text-emerald-700 font-semibold">
+                        Spatial Coverage: {obs.coveragePercent}%
+                      </span>
                     </div>
                   </div>
 
-                  <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 shrink-0">
-                    {obs.reliabilityScore}% Reliability
-                  </span>
+                  {/* Methodology */}
+                  <p className="text-xs text-charcoal-600 leading-relaxed font-sans line-clamp-3">
+                    <strong>Methodology:</strong> {obs.methodology}
+                  </p>
+
+                  {/* Satellite Quality Indices (If Applicable) */}
+                  {(obs.cloudCoverPercent !== undefined || obs.validPixelPercent !== undefined) && (
+                    <div className="flex items-center gap-3 text-[11px] font-mono text-charcoal-500 bg-charcoal-50 p-2 rounded-md mt-2">
+                      {obs.cloudCoverPercent !== undefined && (
+                        <span>Cloud Cover: <strong className="text-charcoal-800">{obs.cloudCoverPercent}%</strong></span>
+                      )}
+                      {obs.validPixelPercent !== undefined && (
+                        <span>Valid Pixels: <strong className="text-charcoal-800">{obs.validPixelPercent}%</strong></span>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Limitations */}
+                  {obs.limitations.length > 0 && (
+                    <div className="mt-2 text-[11px] text-amber-800 bg-amber-50/70 p-2 rounded-md border border-amber-200/60 flex items-start gap-1.5">
+                      <AlertTriangle className="w-3.5 h-3.5 text-amber-700 shrink-0 mt-0.5" />
+                      <span><strong>Limitation:</strong> {obs.limitations[0]}</span>
+                    </div>
+                  )}
                 </div>
 
-                {/* Measurement Highlight */}
-                <div className="p-3 rounded-lg bg-background border border-charcoal-200 my-2.5 flex items-center justify-between font-mono">
-                  <div>
-                    <span className="text-[10px] text-charcoal-400 uppercase block">Empirical Reading</span>
-                    <span className="text-base font-extrabold text-forest-950">
-                      {obs.measuredValue} <span className="text-xs font-semibold text-charcoal-600">{obs.unit}</span>
-                    </span>
+                {/* Footer: Linked Commitment & Coordinates */}
+                <div className="pt-3 border-t border-charcoal-100 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-1.5 text-charcoal-500 truncate max-w-[280px]">
+                    <MapPin className="w-3.5 h-3.5 text-charcoal-400 shrink-0" />
+                    <span className="truncate">{obs.geographicArea}</span>
                   </div>
 
-                  <div className="text-right text-[11px] text-charcoal-500">
-                    <span className="block">Date: {obs.collectionDate}</span>
-                    <span className="text-[10px] text-emerald-700 font-semibold">
-                      Spatial Coverage: {obs.coveragePercent}%
-                    </span>
-                  </div>
+                  {linkedCommitment && (
+                    <Link
+                      href={`/admin/commitments/${linkedCommitment.id}`}
+                      className="text-emerald-700 hover:text-emerald-800 font-semibold flex items-center gap-1 shrink-0"
+                    >
+                      <span>View Target</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </Link>
+                  )}
                 </div>
-
-                {/* Methodology */}
-                <p className="text-xs text-charcoal-600 leading-relaxed font-sans line-clamp-3">
-                  <strong>Methodology:</strong> {obs.methodology}
-                </p>
-
-                {/* Satellite Quality Indices (If Applicable) */}
-                {(obs.cloudCoverPercent !== undefined || obs.validPixelPercent !== undefined) && (
-                  <div className="flex items-center gap-3 text-[11px] font-mono text-charcoal-500 bg-charcoal-50 p-2 rounded-md mt-2">
-                    {obs.cloudCoverPercent !== undefined && (
-                      <span>Cloud Cover: <strong className="text-charcoal-800">{obs.cloudCoverPercent}%</strong></span>
-                    )}
-                    {obs.validPixelPercent !== undefined && (
-                      <span>Valid Pixels: <strong className="text-charcoal-800">{obs.validPixelPercent}%</strong></span>
-                    )}
-                  </div>
-                )}
-
-                {/* Limitations */}
-                {obs.limitations.length > 0 && (
-                  <div className="mt-2 text-[11px] text-amber-800 bg-amber-50/70 p-2 rounded-md border border-amber-200/60 flex items-start gap-1.5">
-                    <AlertTriangle className="w-3.5 h-3.5 text-amber-700 shrink-0 mt-0.5" />
-                    <span><strong>Limitation:</strong> {obs.limitations[0]}</span>
-                  </div>
-                )}
               </div>
-
-              {/* Footer: Linked Commitment & Coordinates */}
-              <div className="pt-3 border-t border-charcoal-100 flex items-center justify-between text-xs">
-                <div className="flex items-center gap-1.5 text-charcoal-500 truncate max-w-[280px]">
-                  <MapPin className="w-3.5 h-3.5 text-charcoal-400 shrink-0" />
-                  <span className="truncate">{obs.geographicArea}</span>
-                </div>
-
-                {linkedCommitment && (
-                  <Link
-                    href={`/admin/commitments/${linkedCommitment.id}`}
-                    className="text-emerald-700 hover:text-emerald-800 font-semibold flex items-center gap-1 shrink-0"
-                  >
-                    <span>View Target</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </Link>
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
 
     </div>
   );
