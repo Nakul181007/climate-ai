@@ -26,6 +26,7 @@ import { formatDate } from '@/lib/utils';
 import { generateAuditReportPDF } from '@/lib/utils/pdfExport';
 import { ProgressStatus, AuditOutcome, AuditRecord } from '@/lib/types';
 import { verifyAuditChain, ChainVerificationResult, GENESIS_HASH } from '@/lib/audit-engine';
+import { CopyHashButton } from '@/components/common/CopyHashButton';
 
 export default function AuditHistoryPage() {
   const { audits, commitments, selectedCity } = useClimate();
@@ -320,12 +321,36 @@ export default function AuditHistoryPage() {
                         <span className="font-bold text-charcoal-900 block text-xs">
                           {formatDate(a.auditDate)}
                         </span>
-                        <span
-                          className="text-[10px] text-charcoal-500 font-mono truncate block max-w-[170px] cursor-help"
-                          title={`Block Hash: ${a.auditHash || a.id}\nPrevious Hash: ${a.previousHash || 'Genesis'}`}
-                        >
-                          {a.auditHash ? `${a.auditHash.substring(0, 18)}...` : a.id}
-                        </span>
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          <span
+                            className="text-[10px] text-charcoal-500 font-mono truncate block max-w-[140px] cursor-help"
+                            title={`Block Hash: ${a.auditHash || a.id}`}
+                          >
+                            {a.auditHash ? `${a.auditHash.substring(0, 16)}...` : a.id}
+                          </span>
+                          {a.auditHash && (
+                            <CopyHashButton
+                              hash={a.auditHash}
+                              label={`Copy Block #${a.blockNumber || idx + 1} SHA-256 hash`}
+                            />
+                          )}
+                        </div>
+                        {a.previousHash && a.previousHash !== GENESIS_HASH && (
+                          <div className="flex items-center gap-1 text-[9px] text-charcoal-400 font-mono mt-0.5">
+                            <span className="truncate max-w-[120px]" title={`Previous Hash: ${a.previousHash}`}>
+                              prev: {a.previousHash.substring(0, 12)}...
+                            </span>
+                            <CopyHashButton
+                              hash={a.previousHash}
+                              label={`Copy Block #${a.blockNumber || idx + 1} parent hash`}
+                            />
+                          </div>
+                        )}
+                        {a.previousHash === GENESIS_HASH && (
+                          <div className="text-[9px] text-emerald-700/80 font-mono mt-0.5">
+                            prev: Genesis (0000...)
+                          </div>
+                        )}
                       </td>
 
                     <td className="py-3.5 px-4">

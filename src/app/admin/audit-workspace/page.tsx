@@ -31,6 +31,7 @@ import { Commitment, Observation, AuditRecord, ProgressStatus } from '@/lib/type
 import { DEMO_OBSERVATIONS } from '@/lib/demo-data';
 import { generateAuditReportPDF } from '@/lib/utils/pdfExport';
 import { formatDate } from '@/lib/utils';
+import { CopyHashButton } from '@/components/common/CopyHashButton';
 
 function AuditWorkspaceContent() {
   const searchParams = useSearchParams();
@@ -338,9 +339,29 @@ function AuditWorkspaceContent() {
           {/* Header Outcome Bar */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-charcoal-200">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-charcoal-400 font-mono">
-                Deterministic Audit Determination &bull; Hash: {currentAudit.auditHash || '0x992b41f'}
-              </span>
+              <div className="flex flex-wrap items-center gap-2 mb-1">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-charcoal-400 font-mono">
+                  Deterministic Audit Determination &bull; Hash:
+                </span>
+                <span
+                  className="text-[11px] font-mono text-charcoal-800 font-bold truncate max-w-[200px]"
+                  title={currentAudit.auditHash}
+                >
+                  {currentAudit.auditHash ? `${currentAudit.auditHash.substring(0, 18)}...` : '0x992b41f'}
+                </span>
+                {currentAudit.auditHash && currentAudit.auditHash.startsWith('sha256:') && (
+                  <CopyHashButton hash={currentAudit.auditHash} label="Copy audit block hash" />
+                )}
+              </div>
+              {currentAudit.previousHash && (
+                <div className="flex items-center gap-1.5 text-[10px] font-mono text-charcoal-500 mb-1">
+                  <span className="text-charcoal-400">Previous Hash:</span>
+                  <span className="truncate max-w-[160px]" title={currentAudit.previousHash}>
+                    {currentAudit.previousHash.substring(0, 16)}...
+                  </span>
+                  <CopyHashButton hash={currentAudit.previousHash} label="Copy previous hash" />
+                </div>
+              )}
               <div className="flex flex-wrap items-center gap-2.5 mt-1.5">
                 {getProgressBadge(currentAudit.progressStatus)}
                 <StatusBadge status={currentAudit.outcome} size="lg" />
