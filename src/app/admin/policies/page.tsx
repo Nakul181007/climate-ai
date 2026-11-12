@@ -382,18 +382,26 @@ export default function PolicyIntelligencePage() {
                 <div
                   key={doc.id}
                   onClick={() => setSelectedSample(doc.id)}
-                  className={`p-3.5 rounded-xl border text-left cursor-pointer transition-all ${
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setSelectedSample(doc.id);
+                    }
+                  }}
+                  className={`p-3.5 rounded-xl border text-left cursor-pointer transition-all focus:outline-none focus:ring-2 focus:ring-forest-800/30 ${
                     selectedSample === doc.id
-                      ? 'border-forest-800 bg-forest-50/60 shadow-subtle'
+                      ? 'border-forest-800 bg-forest-50/60 shadow-subtle ring-1 ring-forest-800/20'
                       : 'border-charcoal-200 bg-surface hover:bg-charcoal-50'
                   }`}
                 >
-                  <div className="flex items-center justify-between text-xs font-bold text-charcoal-900">
-                    <span className="truncate pr-2">{doc.title}</span>
+                  <div className="text-xs font-bold text-charcoal-900 leading-snug break-words">
+                    {doc.title}
                   </div>
-                  <div className="flex items-center justify-between text-[11px] text-charcoal-500 mt-2 font-mono">
-                    <span>{doc.authority}</span>
-                    <span>{doc.pages} Pages &bull; {doc.size}</span>
+                  <div className="flex flex-wrap items-center justify-between gap-1 text-[11px] text-charcoal-500 mt-2.5 pt-2 border-t border-charcoal-100 font-mono">
+                    <span className="font-medium text-charcoal-600">{doc.authority}</span>
+                    <span className="shrink-0">{doc.pages} Pages &bull; {doc.size}</span>
                   </div>
                 </div>
               ))}

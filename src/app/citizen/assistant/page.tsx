@@ -66,9 +66,15 @@ export default function AiAssistantPage() {
   ]);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
   }, [messages]);
 
   const samplePrompts = [
@@ -134,32 +140,35 @@ export default function AiAssistantPage() {
   };
 
   return (
-    <div className="space-y-4 max-w-4xl mx-auto flex flex-col h-[calc(100vh-8rem)]">
+    <div className="max-w-4xl mx-auto flex flex-col h-[calc(100dvh-10.5rem)] lg:h-[calc(100dvh-11.5rem)] min-h-[440px] max-h-[860px] gap-3">
       
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-charcoal-200 shrink-0">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-charcoal-200 shrink-0">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[11px] font-bold uppercase tracking-wider text-forest-900 bg-forest-50 px-2.5 py-0.5 rounded border border-forest-200/80">
               Retrieval-Grounded AI Assistant
             </span>
-            <span className="text-xs text-charcoal-400 font-mono">
+            <span className="text-xs text-charcoal-400 font-mono hidden md:inline">
               Grounded in {selectedCity.name} Audit Records &bull; Citations Required
             </span>
           </div>
-          <h1 className="text-2xl font-extrabold text-forest-950 tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-forest-950 tracking-tight">
             Ask ClimateAI &bull; {selectedCity.name}
           </h1>
         </div>
 
         <div className="flex items-center gap-2 text-xs text-charcoal-500 font-mono self-start sm:self-auto">
-          <ShieldCheck className="w-4 h-4 text-emerald-600" />
+          <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
           <span>Evidence-Grounded Guardrails & Citation Protocol</span>
         </div>
       </div>
 
       {/* Chat Messages Scroll Container */}
-      <div className="flex-1 overflow-y-auto space-y-4 p-4 rounded-xl bg-surface border border-charcoal-200 shadow-subtle">
+      <div
+        ref={chatContainerRef}
+        className="flex-1 min-h-0 overflow-y-auto space-y-3.5 p-3.5 sm:p-4 rounded-xl bg-surface border border-charcoal-200 shadow-subtle"
+      >
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -238,19 +247,22 @@ export default function AiAssistantPage() {
       </div>
 
       {/* Quick Prompts Pills */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 shrink-0 scrollbar-none">
-        <span className="text-[11px] font-bold text-charcoal-500 shrink-0 font-mono">
-          Try asking:
-        </span>
-        {samplePrompts.map((p, idx) => (
-          <button
-            key={idx}
-            onClick={() => handleSendMessage(p)}
-            className="px-2.5 py-1 text-[11px] rounded-lg border border-charcoal-200 bg-surface hover:bg-charcoal-50 text-charcoal-700 font-medium whitespace-nowrap shadow-subtle transition-all shrink-0"
-          >
-            {p}
-          </button>
-        ))}
+      <div className="shrink-0 pt-0.5">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+          <span className="text-[11px] font-bold text-charcoal-500 shrink-0 font-mono">
+            Try asking:
+          </span>
+          {samplePrompts.map((p, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => handleSendMessage(p)}
+              className="px-2.5 py-1 text-[11px] rounded-lg border border-charcoal-200 bg-surface hover:bg-forest-50 hover:border-forest-300 hover:text-forest-900 text-charcoal-700 font-medium whitespace-nowrap shadow-subtle transition-all shrink-0"
+            >
+              {p}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Input Form */}
@@ -259,7 +271,7 @@ export default function AiAssistantPage() {
           e.preventDefault();
           handleSendMessage();
         }}
-        className="flex items-center gap-2 shrink-0"
+        className="flex items-center gap-2 shrink-0 pt-0.5"
       >
         <input
           type="text"
@@ -273,7 +285,7 @@ export default function AiAssistantPage() {
         <button
           type="submit"
           disabled={!inputMessage.trim() || isLoading}
-          className="px-4 py-2.5 text-xs font-bold rounded-xl bg-forest-900 hover:bg-forest-800 text-white shadow-subtle flex items-center gap-1.5 transition-all disabled:opacity-50"
+          className="px-4 py-2.5 text-xs font-bold rounded-xl bg-forest-900 hover:bg-forest-800 text-white shadow-subtle flex items-center gap-1.5 transition-all disabled:opacity-50 shrink-0"
         >
           <span>Send</span>
           <Send className="w-3.5 h-3.5 text-emerald-400" />
