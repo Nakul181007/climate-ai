@@ -215,7 +215,7 @@ export default function CommitmentDetailPage() {
                   : 'text-charcoal-800'
               }`}
             >
-              +{ (commitment.reportingOverstatement * 100).toFixed(1) }%
+              +{ (commitment.reportingOverstatement * 100).toFixed(1) } pp
             </span>
             <span className="text-[10px] text-charcoal-500">City &minus; Verified</span>
           </div>

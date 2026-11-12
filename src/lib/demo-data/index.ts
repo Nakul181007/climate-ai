@@ -312,7 +312,7 @@ export const DEMO_COMMITMENTS: Commitment[] = [
     progressStatus: 'OFF_TRACK',
     sourceAgreement: 'CORROBORATED',
     missingInformationNotes: [
-      'Severe discrepancy: Ward report cites 45,000 saplings planted, but Sentinel-2 NDVI telemetry reveals 78% seedling mortality and industrial encroachment.',
+      'Severe discrepancy: Ward report claims 50% milestone progress via 45,000 planted saplings, but Sentinel-2 NDVI spectral greenness indicates only 12% canopy trajectory, corroborated by sample ground surveys (15% trajectory) under an illustrative demonstration scenario.',
     ],
     extractionConfidence: 95,
     reviewStatus: 'APPROVED',
@@ -1038,7 +1038,7 @@ export const DEMO_AUDITS: AuditRecord[] = [
     ],
     contradictoryEvidenceSummary: [
       'Sentinel-2 NDVI telemetry confirms vegetation canopy trajectory is at only 12%, far below the 50% claimed.',
-      'Independent drone sampling reveals that over 78% of planted saplings withered due to lack of post-monsoon irrigation and soil contamination.',
+      'Illustrative demonstration sampling models that significant sapling loss occurred due to lack of post-monsoon irrigation and soil contamination.',
       'Massive reporting overstatement of 36.5 percentage points detected between official claims (50%) and verified reality (13.5%).',
     ],
     missingEvidenceNotes: [
@@ -1047,7 +1047,7 @@ export const DEMO_AUDITS: AuditRecord[] = [
     deterministicAuditRulesApplied: [
       'EXCEL_RULE_DISCREPANCY: Reporting overstatement (36.5%) exceeds critical 25% threshold -> POTENTIAL_DISCREPANCY.',
       'EXCEL_RULE_PROGRESS_GAP: Planned (50%) - Verified (13.5%) = 36.5% Gap > 15% threshold -> OFF_TRACK.',
-      'RULE_CANOPY_SURVIVAL: Satellite and drone surveys corroborate that sapling survival is below 22%.',
+      'RULE_CANOPY_DISCREPANCY: Satellite spectral greenness (12%) and sample ground survey (15%) corroborate verified progress of 13.5%, creating a 36.5 percentage point gap.',
     ],
     confidenceLimitations: [
       'Scientific Limitation: NDVI detects canopy photosynthetic activity and leaf chlorophyll absorption; newly planted micro-saplings require UAV validation.',
@@ -1178,10 +1178,10 @@ export const DEMO_RECOMMENDATIONS: Recommendation[] = [
     urgency: 'HIGH',
     compositeScore: 85,
     rationale:
-      'Ward K-East suffered a 78% seedling mortality rate due to improper exotic species selection. Replanting with drought-resilient indigenous species (Peepal, Banyan, Neem, and native bamboo) along industrial perimeter buffers will cut localized surface temperature by 2.4°C.',
+      'Ward K-East demonstrates significant sapling loss in demonstration scenarios due to improper exotic species selection. Replanting with drought-resilient indigenous species (Peepal, Banyan, Neem, and native bamboo) along industrial perimeter buffers will cut localized surface temperature by 2.4°C.',
     implementationPrerequisites: [
       'Soil decontamination protocol for heavy metal residues in MIDC industrial soils.',
-      '2-year guaranteed maintenance contract tied to satellite survival milestones.',
+      '2-year maintenance contract tied to multi-temporal ground-truth canopy survival audits.',
     ],
     expectedCarbonOffsetTonsPerYear: 6200,
     isHypotheticalSimulation: false,

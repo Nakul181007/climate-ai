@@ -26,7 +26,7 @@ A core design tenet of ClimateAI Maharashtra is the strict separation between de
 
 1. **Mathematical Truth Engine (Deterministic)**:
    - Verification calculations, gap thresholds, and overstatement percentages are calculated exclusively by deterministic algorithms based on the authoritative prototype specification (`docs/Climate_Tracker_Prototype_Plan.xlsx`).
-   - Generative models are **never permitted** to calculate, alter, or hallucinate numerical progress scores.
+   - Generative models are **strictly excluded** from calculating, modifying, or extrapolating numerical audit metrics.
    
 2. **Formulaic Grounding**:
    - $\text{Verified Progress} = \text{Average}(\text{Compatible Empirical Observations})$
@@ -54,26 +54,25 @@ A core design tenet of ClimateAI Maharashtra is the strict separation between de
 
 Implements the official mathematical scenario model from the *Climate Tracker Prototype Plan*:
 
-$$\Delta P_{\text{total}} = (\Delta \text{Buses} \times 0.045\%) + (\Delta \text{Corridors} \times 0.90\%)$$
+$$\Delta P_{\text{total}} = (\Delta \text{Buses} \times 0.035\%) + (\Delta \text{Corridors} \times 1.6\%)$$
 $$P_{\text{projected}} = P_{\text{baseline}} + \Delta P_{\text{total}}$$
-$$\text{Capital Required} = (\Delta \text{Buses} \times 1.50\text{ Cr}) + (\Delta \text{Corridors} \times 25.0\text{ Cr})$$
-$$\text{Emissions Mitigated} = (\Delta \text{Buses} \times 32\text{ tCO}_2\text{/yr}) + (\Delta \text{Corridors} \times 1,450\text{ tCO}_2\text{/yr})$$
+$$\text{Capital Required} = (\Delta \text{Buses} \times 1.20\text{ Cr}) + (\Delta \text{Corridors} \times 45.0\text{ Cr})$$
 
-- **Default Scenario**: 6.0% verified baseline + 200 electric buses + 3 dedicated corridors = **17.8% projected progress** (₹375 Cr CapEx, 10,750 tCO₂e/yr mitigated, 12.2% shortfall against 30.0% statutory target).
-- **Interactive Levers**: Real-time adjustment up to 800 buses and 10 corridors with live budget constraint optimization.
+- **Default Scenario**: 6.0% verified baseline + 200 electric buses + 3 dedicated corridors = **17.8% projected progress** (₹375 Cr CapEx, 12.2 pp shortfall against 30.0% statutory target).
+- **Interactive Levers**: Instantaneous slider recalculation up to 800 buses and 10 corridors with interactive budget constraint optimization.
 
 ---
 
 ## 🏛️ Application Architecture & Routes
 
 ### A. Government Intelligence Portal (9 Enterprise Routes)
-1. **`/admin`** &mdash; Executive Command Centre: Real-time dual-status matrix, overall verified score (60.7%), average overstatement (+11.0%), and city comparison.
+1. **`/admin`** &mdash; Executive Command Centre: Comprehensive dual-status matrix, overall verified score (60.7%), average overstatement (+11.0 pp), and city comparison.
 2. **`/admin/commitments`** &mdash; Statutory Commitments Directory: High-density analytical data table with search, sector, target year, overstatement badges, and progress status filters.
 3. **`/admin/commitments/[id]`** &mdash; Comprehensive Commitment Dossier: Policy verbatim quotes, empirical observation ledger, trilingual AI explanations, and one-click PDF export.
 4. **`/admin/policies`** &mdash; Policy Ingestion & Review Studio: PDF upload, Gemini extraction with page numbers, confidence scoring, and human-in-the-loop approval workflow.
 5. **`/admin/evidence`** &mdash; Evidence Explorer: Copernicus Sentinel-2 multispectral bands, valid pixel thresholds, cloud-cover verification (<10%), and CPCB sensor telemetry.
 6. **`/admin/audit-workspace`** &mdash; Deterministic Audit Engine: Execution workbench comparing municipal claims against satellite indices with cryptographic provenance.
-7. **`/admin/audit-history`** &mdash; Immutable Audit Trail: Historical audit ledger with cryptographic SHA-256 state hashes, verification timestamps, and PDF certificate export.
+7. **`/admin/audit-history`** &mdash; Tamper-Evident Audit Trail: Historical audit ledger with cryptographic SHA-256 state hashes, verification timestamps, and demonstration certificate export.
 8. **`/admin/recommendations`** &mdash; Interventions Matrix: Prioritized corrective interventions ranked by cost-effectiveness, feasibility, and emissions impact.
 9. **`/admin/simulator`** &mdash; What-If Scenario Simulator: Interactive policy lever modeller applying the exact Excel formula.
 10. **`/admin/map`** &mdash; Municipal GIS Command Map: Interactive Leaflet OpenStreetMap with layer toggles and observation overlays.
@@ -133,16 +132,16 @@ http://localhost:3000
 ## 🎬 15-Step Hackathon Demonstration Script
 
 1. **Gateway Landing (`/`)**: Introduce product vision *"From Climate Commitments to Verified Climate Action"*, explaining the dual-portal model.
-2. **Executive Command Centre (`/admin`)**: Highlight Mumbai as primary pilot; show the **Overall Verified Score (60.7%)** and **Average Overstatement (+11.0%)**.
+2. **Executive Command Centre (`/admin`)**: Highlight Mumbai as primary pilot; show the **Overall Verified Score (60.7%)** and **Average Overstatement (+11.0 pp)**.
 3. **Policy Ingestion (`/admin/policies`)**: Upload or inspect policy document (*Mumbai Climate Action Plan 2022*). Trigger Gemini structured extraction with page citations.
 4. **Staging Review & Human Approval (`/admin/policies`)**: Review extracted commitments, note missing information flags, and click **Approve** to commit to statutory state.
 5. **Commitments Directory (`/admin/commitments`)**: Switch to high-density analytical table view; filter by `Sector = Transport` and identify the **23.5% Implementation Gap** on BEST bus electrification.
 6. **Detailed Commitment Dossier (`/admin/commitments/com-mum-exp-01`)**: Examine mathematical verification strip, verbatim policy quotes, and Sentinel-2 / CPCB empirical observation streams.
 7. **Evidence Explorer (`/admin/evidence`)**: Inspect Copernicus Sentinel-2 Level-2A surface reflectance data, cloud cover filters (<10%), and CPCB sensor calibration logs.
-8. **Audit Engine Workspace (`/admin/audit-workspace`)**: Run deterministic verification on Ward K-East Mangrove commitment (`com-mum-exp-03`), revealing a **+36.5% Reporting Overstatement** and **POTENTIAL DISCREPANCY** status.
-9. **Immutable Audit History (`/admin/audit-history`)**: Inspect the cryptographically hashed audit ledger and click **Export Audit Certificate (PDF)** to generate a tamper-evident audit report.
+8. **Audit Engine Workspace (`/admin/audit-workspace`)**: Run deterministic verification on Ward K-East Mangrove commitment (`com-mum-exp-05`), revealing a **+36.5 percentage point Reporting Overstatement** and **POTENTIAL DISCREPANCY** status.
+9. **Tamper-Evident Audit History (`/admin/audit-history`)**: Inspect the cryptographically hashed audit ledger and click **Export Audit Certificate (PDF)** to generate a demonstration audit report.
 10. **Recommendations Engine (`/admin/recommendations`)**: Review ranked corrective interventions for underperforming sectors.
-11. **What-If Scenario Simulator (`/admin/simulator`)**: Demonstrate exact Excel formula parity. Move slider from 200 buses to 450 buses + 5 corridors, observing live CapEx increase from ₹375 Cr to ₹800 Cr and projected progress closing the gap to 28.5%.
+11. **What-If Scenario Simulator (`/admin/simulator`)**: Demonstrate exact Excel formula parity. Move slider from 200 buses to 450 buses + 5 corridors, observing CapEx increase from ₹375 Cr to ₹800 Cr and projected progress closing the gap to 28.5%.
 12. **GIS Command Map (`/admin/map`)**: Toggle Sentinel-2 NDVI overlay and BEST depot telematics across Mumbai wards.
 13. **Switch to Citizen Portal (`/citizen`)**: View the 5 Citizen Questions formatted for public accountability.
 14. **Multilingual Toggle**: Click **मराठी (MR)** or **हिन्दी (HI)** in the top navigation; observe instant translation of policy explanations and scorecards.

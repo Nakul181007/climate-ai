@@ -59,7 +59,7 @@ export default function AdminDashboardPage() {
             Climate Accountability Portfolio &bull; {selectedCity.name}
           </h1>
           <p className="text-xs sm:text-sm text-charcoal-600 mt-1 max-w-3xl leading-relaxed">
-            Continuous cross-verification of {selectedCity.climateActionPlanName} statutory targets using Copernicus Sentinel-2 Earth observation, CPCB telemetry, and municipal logs.
+            Empirical cross-verification of {selectedCity.climateActionPlanName} statutory targets using calibrated Copernicus Sentinel-2 Earth observation, CPCB telemetry, and municipal demonstration records.
           </p>
         </div>
 
@@ -166,7 +166,7 @@ export default function AdminDashboardPage() {
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-4xl font-extrabold text-amber-800 font-mono tracking-tight">
-                +{stats.avgReportingOverstatementPct}%
+                +{stats.avgReportingOverstatementPct} pp
               </span>
               <span className="text-xs text-amber-700 font-medium">
                 divergence index
@@ -180,7 +180,7 @@ export default function AdminDashboardPage() {
           <div className="mt-4 pt-3 border-t border-charcoal-100 text-xs text-charcoal-500 flex items-center justify-between">
             <span className="truncate">
               {highestOverstatement
-                ? `Highest in: ${highestOverstatement.title.length > 28 ? highestOverstatement.title.substring(0, 26) + '...' : highestOverstatement.title} (+${(highestOverstatement.reportingOverstatement * 100).toFixed(1)}%)`
+                ? `Highest in: ${highestOverstatement.title.length > 28 ? highestOverstatement.title.substring(0, 26) + '...' : highestOverstatement.title} (+${(highestOverstatement.reportingOverstatement * 100).toFixed(1)} pp)`
                 : 'No divergence reported'}
             </span>
             <Link
@@ -287,7 +287,7 @@ export default function AdminDashboardPage() {
               </div>
               <div className="p-2.5 rounded-lg bg-surface border border-charcoal-200">
                 <span className="text-charcoal-400 text-[10px] block uppercase">Illustrative Gap</span>
-                <span className="text-sm font-bold text-rose-700">12.2% Shortfall</span>
+                <span className="text-sm font-bold text-rose-700">12.2 pp Shortfall</span>
               </div>
             </div>
           </div>

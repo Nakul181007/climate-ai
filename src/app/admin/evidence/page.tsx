@@ -244,9 +244,14 @@ export default function EvidenceExplorerPage() {
                       </div>
                     </div>
 
-                    <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 shrink-0">
-                      {obs.reliabilityScore}% Reliability
-                    </span>
+                    <div className="flex flex-col items-end gap-1 shrink-0">
+                      <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">
+                        {obs.reliabilityScore}% Reliability
+                      </span>
+                      <span className="px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 font-mono font-bold text-[9px] border border-amber-300">
+                        {obs.isSimulated !== false ? 'SIMULATED DEMONSTRATION RECORD' : 'CALIBRATED OBSERVATION RECORD'}
+                      </span>
+                    </div>
                   </div>
 
                   {/* Measurement Highlight */}

@@ -19,10 +19,10 @@ const views = [
     features: [
       'Dual audience routing: Government Intelligence Portal vs. Citizen Public Transparency Portal',
       'Pilot jurisdictions spotlight: Mumbai (MCAP 2022) and Pune (PCAP 2023)',
-      'Direct walkthrough download button linking to official PDF documentation',
+      'Direct walkthrough download button linking to platform walkthrough documentation (PDF)',
       'Overview of 5 Core Citizen Questions: What was promised? What is observed? Does it match? What gaps exist? What next?'
     ],
-    statusText: 'PUBLIC GATEWAY LIVE • DUAL PORTAL ACCESS',
+    statusText: 'INTERACTIVE GATEWAY • DUAL PORTAL ACCESS',
     statusColor: [5, 150, 105] // Emerald
   },
   {
@@ -83,14 +83,14 @@ const views = [
     url: 'http://localhost:3000/admin/commitments/com-mum-exp-05',
     route: '/admin/commitments/com-mum-exp-05',
     action: 'Inspecting POTENTIAL DISCREPANCY status, NDVI telemetry, or drone photogrammetry corroboration',
-    description: 'Dossier highlighting a major discrepancy (+36.5% Overstatement). City claimed 45,000 nursery saplings planted, but Copernicus Sentinel-2 satellite radiometric surveillance detected 78% seedling mortality.',
+    description: 'Dossier highlighting a major discrepancy (+36.5 percentage points Overstatement). City claimed 50% progress via 45,000 nursery saplings planted, but Copernicus Sentinel-2 NDVI detected only 12% canopy greenness trajectory, corroborated by ground UAV surveys (15% trajectory) under an illustrative demonstration scenario.',
     features: [
       'Prominent POTENTIAL DISCREPANCY audit alert and Off Track progress badge',
-      'Reporting Overstatement math: Claimed 50% vs. Satellite Verified 13.5% (+36.5% critical discrepancy)',
+      'Reporting Overstatement math: Claimed 50% vs. Satellite Verified 13.5% (+36.5 percentage points critical discrepancy)',
       'Sentinel-2 Level-2A NDVI surface reflectance index (12%) corroborated by IIT Bombay drone surveys (15%)',
       'Strict scientific guardrail: NDVI measures canopy chlorophyll greenness, not individual tree counts'
     ],
-    statusText: 'POTENTIAL DISCREPANCY • +36.5% OVERSTATEMENT DETECTED',
+    statusText: 'POTENTIAL DISCREPANCY • +36.5 pp OVERSTATEMENT DETECTED',
     statusColor: [225, 29, 72]
   },
   {
@@ -139,7 +139,7 @@ const views = [
       'Deterministic gap evaluation: On Track (<=5%), At Risk (5-15%), Off Track (>15%)',
       'Tamper-evident SHA-256 state hash generated upon verification completion',
       'Multi-source corroboration matrix comparing satellite and ground sensor streams',
-      'Direct export of official verification certificate with cryptographic attribution'
+      'Direct export of demonstration audit certificate with cryptographic hash attribution'
     ],
     statusText: 'DETERMINISTIC RULES V2.4 • TAMPER-EVIDENT SHA-256',
     statusColor: [5, 150, 105]
@@ -158,7 +158,7 @@ const views = [
       'Instant PDF report download button on every row generating formal audit certificates',
       'Statutory compliance filter (Supported, Partially Supported, Inconclusive, Discrepancy)'
     ],
-    statusText: 'IMMUTABLE AUDIT TRAIL • 6 FORMAL AUDITS ON RECORD',
+    statusText: 'TAMPER-EVIDENT AUDIT TRAIL • 6 FORMAL AUDITS ON RECORD',
     statusColor: [14, 46, 35]
   },
   {
@@ -201,7 +201,7 @@ const views = [
     url: 'http://localhost:3000/admin/map',
     route: '/admin/map',
     action: 'Toggling climatic atmosphere layers (🌧️ Monsoon Rain Radar, 🌡️ Heat Island, 🍃 NDVI Canopy) or selecting observation markers',
-    description: 'Geospatial intelligence map built with Leaflet, OpenStreetMap, and Esri Satellite. Features live weather and climatic intensity layers, Doppler precipitation radar (78 mm/hr Mithi stormfront), Landsat thermal anomalies (44.3°C peak heat sink), and ward-level observation pins.',
+    description: 'Geospatial intelligence map built with Leaflet, OpenStreetMap, and Esri Satellite. Features calibrated climatic demonstration layers, Doppler precipitation radar model (78 mm/hr Mithi stormfront simulation), Landsat thermal anomalies (44.3°C peak heat sink), and ward-level observation pins.',
     features: [
       'Interactive Climatic Atmosphere: Monsoon Rain Radar (78 mm/hr), Heat Island Hotspots (44.3°C), and NDVI Canopy (0.76 peak)',
       'OpenStreetMap standard tiles + Esri Satellite Earth Observation basemaps (Zero API key required)',
@@ -444,7 +444,7 @@ function buildCompletePdf() {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(8.5);
   doc.setTextColor(6, 95, 70);
-  doc.text('LIVE PLATFORM PROTOTYPE • PRODUCTION DEPLOYMENT', col2X + 6, coverY + 92);
+  doc.text('INTERACTIVE PLATFORM DEMONSTRATOR • PROTOTYPE ARCHITECTURE', col2X + 6, coverY + 92);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
@@ -507,7 +507,7 @@ function buildCompletePdf() {
     '',
     '2. Citizen Transparency Portal: Translates complex satellite spectral indices and SCADA logs into plain-language civic accountability scorecards answering the 5 Core Citizen Questions in English, Marathi, and Hindi.',
     '',
-    '3. Strict Mathematical Grounding: Isolates deterministic audit calculations (Excel model parity: 60.7% portfolio score) from generative AI, guaranteeing zero hallucinations in statutory compliance scores.'
+    '3. Deterministic Mathematical Isolation: Evaluates all statutory compliance calculations exclusively through verified deterministic algorithms (Excel model parity: 60.7% portfolio score), fully isolating numerical audits from generative text models.'
   ];
   doc.text(doc.splitTextToSize(solText.join('\n'), p2ColW - 12), p2Col2X + 6, p2Y + 15);
 
@@ -524,8 +524,8 @@ function buildCompletePdf() {
   doc.text('3. TARGET USERS & BENEFICIARIES', margin + 6, p2Y + 8);
 
   const users = [
-    { title: 'Municipal Executives (BMC & PMC Commissioners):', desc: 'Real-time portfolio visibility over departmental progress and capital expenditure risks.' },
-    { title: 'Department Engineers (BEST, SWD, Gardens):', desc: 'Identifies grid interconnection bottlenecks and contractor mortality rates.' },
+    { title: 'Municipal Executives (BMC & PMC Commissioners):', desc: 'Portfolio visibility over departmental progress and capital expenditure risks.' },
+    { title: 'Department Engineers (BEST, SWD, Gardens):', desc: 'Identifies grid interconnection bottlenecks and plantation sapling survival rates.' },
     { title: 'State Climate Departments (DoECC GoM):', desc: 'Cross-city comparative analysis benchmarking municipal delivery schedules.' },
     { title: 'Citizens & Resident Associations (ALMs):', desc: 'Verifiable accountability tracking local ward promises and neighborhood flood defenses.' },
     { title: 'Investigative Journalists & Civic Auditors:', desc: 'Cryptographically hashed provenance trails enabling fraud detection.' }
@@ -557,8 +557,8 @@ function buildCompletePdf() {
   const innovations = [
     { title: 'Deterministic Scientific Integrity Matrix:', desc: 'Evaluates empirical progress strictly against statutory gap rules (<=5% On Track, 5-15% At Risk, >15% Off Track) with 60.7% portfolio score parity.' },
     { title: 'Multi-Sensor Convergence Protocol:', desc: 'Cross-verifies Sentinel-2 optical/SAR imagery against ground CPCB monitors, ITMS GPS, and drone sampling to prevent single-source bias.' },
-    { title: 'Tamper-Evident SHA-256 Ledger:', desc: 'Every audit state is cryptographically signed with standard 64-character SHA-256 hex hashes to guarantee provenance.' },
-    { title: 'Real-Time What-If Policy Modeller:', desc: 'Empowers urban planners to adjust capital expenditure levers and simulate closure of emissions gaps.' }
+    { title: 'Tamper-Evident SHA-256 Ledger:', desc: 'Every audit state is cryptographically linked using standard 64-character SHA-256 hexadecimal digests to provide verifiable mathematical tamper evidence.' },
+    { title: 'Interactive What-If Policy Modeller:', desc: 'Empowers urban planners to adjust capital expenditure levers and simulate closure of emissions gaps with instant recalculation.' }
   ];
 
   let inY = p2Y + 15;
@@ -719,7 +719,7 @@ function buildCompletePdf() {
       num: 'STEP 03',
       title: 'Independent Evidence Telemetry',
       tech: 'Copernicus Sentinel-2 & Ground IoT',
-      body: 'Autonomous telemetry pipelines retrieve Earth observation records: Copernicus Sentinel-2 multispectral NDVI (10m BOA), Sentinel-5P tropospheric NO2 columns, CPCB CAAQMS sensors, and BEST ITMS GPS logs.',
+      body: 'Demonstration telemetry registry incorporates calibrated Earth observation records: Copernicus Sentinel-2 multispectral NDVI (10m BOA), Sentinel-5P tropospheric NO2 columns, CPCB CAAQMS sensors, and BEST ITMS AVL logs.',
       output: 'Multi-Source Environmental Observations'
     },
     {
@@ -727,7 +727,7 @@ function buildCompletePdf() {
       title: 'Deterministic Climate Audit',
       tech: 'Deterministic Audit Matrix v2.4',
       body: 'Mathematical truth is strictly isolated from generative AI. The deterministic engine calculates Verified Progress, Gap vs Plan, and Reporting Overstatement, evaluating thresholds to render tamper-evident SHA-256 digests.',
-      output: 'SHA-256 Signed Audit Ledger (60.7% Score)'
+      output: 'SHA-256 Hashed Audit Ledger (60.7% Score)'
     },
     {
       num: 'STEP 05',
@@ -798,7 +798,7 @@ function buildCompletePdf() {
   // PAGE 21: SECTION 5 — TECHNOLOGY & INNOVATION
   // ==========================================
   doc.addPage();
-  drawHeader('Section 5 — Technology Stack, Cryptographic Auditing & AI Innovation', 'Technical Architecture', 'ENGINEERING SPECIFICATIONS • ZERO HALLUCINATION ARCHITECTURE');
+  drawHeader('Section 5 — Technology Stack, Cryptographic Auditing & AI Innovation', 'Technical Architecture', 'ENGINEERING SPECIFICATIONS • DETERMINISTIC AUDIT & GROUNDED AI');
 
   const p21ColW = (contentWidth - 12) / 3;
   let p21Y = 30;
@@ -850,8 +850,8 @@ function buildCompletePdf() {
       bullets: [
         'Standard 64-character SHA-256 hexadecimal state hashes for all formal audits',
         'Cryptographic audit trail linking timestamp, evaluated targets, and raw evidence',
-        'Immutable verification ledger page logging historical outcomes chronologically',
-        'Dynamic client/server SHA-256 digest generator for real-time audit verification'
+        'Tamper-evident verification ledger page logging historical outcomes with SHA-256 hash chaining',
+        'Client/server SHA-256 digest generator for deterministic audit verification'
       ]
     },
     {

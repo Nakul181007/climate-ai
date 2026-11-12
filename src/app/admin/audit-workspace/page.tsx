@@ -146,7 +146,7 @@ function AuditWorkspaceContent() {
             Climate Audit Verification Workspace &bull; {selectedCity.name}
           </h1>
           <p className="text-xs text-charcoal-600 mt-1 max-w-3xl">
-            Cross-evaluate municipal statutory claims against independent Copernicus Sentinel-2 satellite data and CPCB telemetry without generative hallucination.
+            Cross-evaluate municipal statutory claims against independent Copernicus Sentinel-2 satellite data and CPCB telemetry using deterministic mathematical verification.
           </p>
         </div>
 

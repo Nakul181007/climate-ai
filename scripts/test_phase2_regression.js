@@ -3,8 +3,15 @@
  * Validates Scientific Integrity, Deterministic Audit Matrix v2.4, Excel Simulator Parity, and Ledger Verification.
  */
 
+const fs = require('fs');
 const http = require('http');
 const path = require('path');
+const { execSync } = require('child_process');
+
+const tempDir = path.join(__dirname, 'temp_build');
+if (!fs.existsSync(path.join(tempDir, 'audit-engine', 'index.js')) || !fs.existsSync(path.join(tempDir, 'demo-data', 'index.js'))) {
+  execSync('npx.cmd tsc src/lib/audit-engine/index.ts src/lib/demo-data/index.ts --outDir scripts/temp_build --module commonjs --target es2020 --moduleResolution node --skipLibCheck --esModuleInterop', { stdio: 'pipe', cwd: path.join(__dirname, '..') });
+}
 const {
   sha256Hex,
   calculateAuditBlockHash,

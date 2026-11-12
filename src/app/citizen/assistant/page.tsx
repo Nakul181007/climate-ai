@@ -25,6 +25,8 @@ interface ChatMessage {
   content: string;
   timestamp: string;
   citations?: { source: string; type: string }[];
+  isAiGenerated?: boolean;
+  modelUsed?: string;
 }
 
 export default function AiAssistantPage() {
@@ -53,7 +55,7 @@ export default function AiAssistantPage() {
     {
       id: 'msg-sample-a',
       sender: 'assistant',
-      content: `**Ward K-East (Andheri East) Green Canopy Discrepancy [Audit com-mum-exp-05]:**\n\n- **Official City Claim [MCAP Page 74]:** Municipal reports claimed 50% progress achieved via planting 45,000 tree saplings in industrial buffer zones.\n- **Independent Earth Observation:** Copernicus **Sentinel-2 Level-2A NDVI [Obs 2024-10-10]** and IIT Bombay drone surveys verified only **13.5% actual canopy progress**.\n- **The Discrepancy:** A reporting overstatement of **+36.5 percentage points** was detected. Over 78% of saplings withered due to post-monsoon irrigation neglect and MIDC soil contamination.\n- **Action Taken:** Flagged as **POTENTIAL DISCREPANCY** under the Scientific Integrity Matrix, triggering automated contractor payment holds.`,
+      content: `**Ward K-East (Andheri East) Green Canopy Discrepancy [Audit com-mum-exp-05]:**\n\n- **Official City Claim [MCAP Page 74]:** Municipal reports claimed 50% progress achieved via planting 45,000 tree saplings in industrial buffer zones.\n- **Independent Earth Observation:** Copernicus **Sentinel-2 Level-2A NDVI [Obs 2024-10-10]** and IIT Bombay drone surveys verified only **13.5% actual canopy progress**.\n- **The Discrepancy:** A reporting overstatement of **+36.5 percentage points** was detected. Illustrative demonstration records indicate significant sapling loss occurred due to post-monsoon irrigation neglect and MIDC soil contamination.\n- **Action Taken:** Flagged as **POTENTIAL DISCREPANCY** under the Scientific Integrity Matrix, triggering automated contractor payment holds.`,
       timestamp: '10:02 AM',
       citations: [
         { source: 'Copernicus Sentinel-2 Level-2A NDVI Index', type: 'Satellite Observation' },
@@ -110,6 +112,8 @@ export default function AiAssistantPage() {
         content: data.reply || 'I could not retrieve an answer at this time.',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         citations: data.citations || [],
+        isAiGenerated: data.isAiGenerated,
+        modelUsed: data.modelUsed,
       };
 
       setMessages((prev) => [...prev, assistantMsg]);
@@ -199,12 +203,19 @@ export default function AiAssistantPage() {
                 </div>
               )}
 
-              <div
-                className={`text-[10px] text-right font-mono ${
-                  msg.sender === 'user' ? 'text-forest-300' : 'text-charcoal-400'
-                }`}
-              >
-                {msg.timestamp}
+              <div className="flex items-center justify-between pt-1">
+                {msg.sender === 'assistant' && (
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-charcoal-100 text-charcoal-600 border border-charcoal-200">
+                    {msg.isAiGenerated ? 'Gemini Flash • Retrieval Grounded' : 'Demonstration Knowledge Base (Offline)'}
+                  </span>
+                )}
+                <div
+                  className={`text-[10px] font-mono ${
+                    msg.sender === 'user' ? 'text-forest-300 ml-auto' : 'text-charcoal-400'
+                  }`}
+                >
+                  {msg.timestamp}
+                </div>
               </div>
             </div>
 

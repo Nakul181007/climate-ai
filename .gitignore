@@ -5,6 +5,7 @@
 
 # Testing
 /coverage
+scripts/temp_build/
 
 # Next.js
 /.next/

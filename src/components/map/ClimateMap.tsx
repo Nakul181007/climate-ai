@@ -120,7 +120,7 @@ const LOCALITY_MARKERS: MapMarkerData[] = [
     commitmentTitle: 'Green Cover & Mangrove Buffer Expansion in Ward K-East (+4% Canopy Gain)',
     source: 'Copernicus Sentinel-2 Level-2A NDVI & IIT Bombay UAV Sampling',
     observationDate: '2024-10-10',
-    notes: 'Sentinel-2 NDVI detects 78% seedling mortality across industrial plantation plots, creating a +36.5% reporting overstatement.',
+    notes: 'Copernicus Sentinel-2 NDVI demonstrates only 12% canopy greenness trajectory vs 50% claimed, corroborated by ground UAV surveys (15% progress) under an illustrative demonstration scenario.',
     isSimulated: true,
   },
   {
@@ -800,14 +800,14 @@ export function ClimateMap() {
               <div className="flex items-center gap-2.5">
                 <CloudRain className="w-4 h-4 text-blue-400 animate-bounce" />
                 <div>
-                  <span className="font-bold text-white">Monsoon Doppler Radar:</span>{' '}
+                  <span className="font-bold text-white">Calibrated Monsoon Radar Model:</span>{' '}
                   <span className="text-blue-200">
-                    Convective Stormfront over Central Mithi Basin (78 mm/hr) &bull; Flood Runoff Funnel Tracked
+                    Convective Stormfront Simulation over Central Mithi Basin (78 mm/hr) &bull; Modeled Runoff Funnel
                   </span>
                 </div>
               </div>
               <span className="text-[10px] bg-blue-800/90 text-blue-100 px-2 py-0.5 rounded font-mono font-bold hidden sm:inline-block">
-                85% Cloud Cover &bull; Inundation Alert
+                85% Cloud Cover &bull; Inundation Alert (Simulated)
               </span>
             </div>
           )}
@@ -817,9 +817,9 @@ export function ClimateMap() {
               <div className="flex items-center gap-2.5">
                 <Flame className="w-4 h-4 text-amber-400 animate-pulse" />
                 <div>
-                  <span className="font-bold text-white">Land Surface Temperature (LST):</span>{' '}
+                  <span className="font-bold text-white">Land Surface Temperature (LST Model):</span>{' '}
                   <span className="text-rose-200">
-                    Extreme Thermal Anomaly (+9.1°C Peak) in Deonar, Govandi & Dharavi Impervious Sinks
+                    Calibrated Thermal Anomaly (+9.1°C Peak) in Deonar, Govandi & Dharavi Impervious Demonstration Zones
                   </span>
                 </div>
               </div>

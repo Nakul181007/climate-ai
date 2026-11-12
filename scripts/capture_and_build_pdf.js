@@ -63,7 +63,7 @@ const views = [
     portal: 'Government Intelligence Portal',
     url: 'http://localhost:3000/admin/commitments/com-mum-exp-01',
     route: '/admin/commitments/com-mum-exp-01',
-    action: 'Clicking "Run Audit Verification", toggling language tabs, or clicking "Export Official PDF Dossier"',
+    action: 'Clicking "Run Audit Verification", toggling language tabs, or clicking "Export PDF Report"',
     description: 'Comprehensive statutory dossier for 100% Electrification of BEST Municipal Bus Fleet. Displays verbatim policy quote from MCAP Page 78, raw multi-source observation streams, and mathematical strip.',
     features: [
       'Mathematical Verification Strip: Planned 30.0% vs. City 14.0% vs. Verified 6.5% -> 23.5% Implementation Gap',
@@ -79,7 +79,7 @@ const views = [
     url: 'http://localhost:3000/admin/commitments/com-mum-exp-03',
     route: '/admin/commitments/com-mum-exp-03',
     action: 'Clicking on Potential Discrepancy badge to inspect conflicting satellite observations',
-    description: 'Dossier highlighting a major discrepancy (+36.5% Overstatement). City claimed 45,000 nursery saplings planted, but Copernicus Sentinel-2 satellite radiometric surveillance detected net vegetation decline.',
+    description: 'Dossier highlighting a major discrepancy (+36.5 percentage points Overstatement). City claimed 50% progress via 45,000 nursery saplings planted, but Copernicus Sentinel-2 NDVI detected stagnant greenness (12% trajectory), corroborated by ground UAV surveys.',
     features: [
       'Prominent POTENTIAL DISCREPANCY audit alert and Conflict status banner',
       'Reporting Overstatement math: Claimed 45.0% vs. Satellite Verified 8.5% (+36.5% discrepancy)',
@@ -129,12 +129,12 @@ const views = [
       'Deterministic gap evaluation: On Track (<=5%), At Risk (5-15%), Off Track (>15%)',
       'Cryptographic provenance signature generated upon verification completion',
       'Multi-source corroboration matrix comparing satellite and ground sensor streams',
-      'Direct export of official verification certificate'
+      'Direct export of demonstration audit certificate'
     ]
   },
   {
     id: '09_admin_audit_history',
-    name: 'Immutable Audit History Ledger',
+    name: 'Tamper-Evident Audit History Ledger',
     portal: 'Government Intelligence Portal',
     url: 'http://localhost:3000/admin/audit-history',
     route: '/admin/audit-history',
@@ -171,19 +171,19 @@ const views = [
     description: 'Interactive policy lever modeller implementing the exact mathematical model from the hackathon specification workbook. Shows real-time recalculation of projected progress, CapEx, and emissions mitigated.',
     features: [
       'Exact Excel Model Parity: Baseline 6.0% + 200 buses + 3 corridors = 17.8% projected progress',
-      'Capital expenditure calculation: 200 buses @ 1.50 Cr + 3 corridors @ 25 Cr = 375 Cr CapEx',
-      'Target comparison: 17.8% projected vs. 30.0% statutory target -> 12.2% projected shortfall',
-      'Interactive sliders updating live with budget constraint badges'
+      'Capital expenditure calculation: 200 buses @ 1.2 Cr + 3 corridors @ 45 Cr = 375 Cr CapEx',
+      'Target comparison: 17.8% projected vs. 30.0% statutory target -> 12.2 pp projected shortfall',
+      'Interactive sliders updating with budget constraint badges'
     ]
   },
   {
     id: '12_admin_map',
-    name: 'Municipal GIS Command Map (Live Climatic Layers)',
+    name: 'Municipal GIS Command Map (Climatic Simulation Layers)',
     portal: 'Government Intelligence Portal',
     url: 'http://localhost:3000/admin/map',
     route: '/admin/map',
     action: 'Toggling climatic atmosphere layers (🌧️ Monsoon Rain Radar, 🌡️ Urban Heat Island, 🍃 NDVI Canopy) or selecting observation markers',
-    description: 'Geospatial intelligence map built with Leaflet and OpenStreetMap. Features live weather and climatic intensity layers, Doppler precipitation radar (78 mm/hr Mithi stormfront), Landsat-9 Land Surface Temperature anomalies (44.3°C peak heat sink), and ward-level observation pins.',
+    description: 'Geospatial intelligence map built with Leaflet and OpenStreetMap. Features calibrated climatic demonstration layers, Doppler precipitation radar model (78 mm/hr Mithi stormfront simulation), Landsat-9 Land Surface Temperature anomalies (44.3°C peak heat sink), and ward-level observation pins.',
     features: [
       'Interactive Climatic Atmosphere: Monsoon Rain Radar (78 mm/hr), Heat Island Hotspots (44.3°C), and NDVI Canopy',
       'OpenStreetMap standard tiles + Esri Satellite Earth Observation basemaps (Zero API key required)',
@@ -387,7 +387,7 @@ function buildPdf() {
     { num: '06', title: 'Policy Intelligence & Ingestion Studio', route: '/admin/policies' },
     { num: '07', title: 'Multi-Source Evidence Explorer', route: '/admin/evidence' },
     { num: '08', title: 'Deterministic Climate Audit Engine', route: '/admin/audit-workspace' },
-    { num: '09', title: 'Immutable Audit History Ledger', route: '/admin/audit-history' },
+    { num: '09', title: 'Tamper-Evident Audit History Ledger', route: '/admin/audit-history' },
     { num: '10', title: 'Ranked Decision Recommendations', route: '/admin/recommendations' },
     { num: '11', title: 'What-If Scenario Simulator (Excel Model)', route: '/admin/simulator' },
     { num: '12', title: 'Municipal GIS Command Map', route: '/admin/map' },

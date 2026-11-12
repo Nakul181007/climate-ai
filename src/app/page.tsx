@@ -37,7 +37,7 @@ export default function LandingGatewayPage() {
       step: '02',
       question: 'What evidence is available regarding implementation?',
       description:
-        'Independent multi-source retrieval gathers Copernicus Sentinel-2 satellite indices, CPCB ambient air telemetry, and municipal depot registries.',
+        'Independent multi-source evaluation cross-references Copernicus Sentinel-2 satellite indices, CPCB ambient air telemetry, and municipal depot demonstration snapshots.',
       icon: Satellite,
     },
     {

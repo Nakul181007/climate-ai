@@ -119,7 +119,7 @@ Provide an evidence-grounded response with explicit source citations.`;
         reply = `**Ward K-East (Andheri East) Green Canopy Discrepancy [Audit com-mum-exp-05]:**
 - **Official City Claim [MCAP Page 74]:** Municipal reports claimed 50% progress achieved via planting 45,000 tree saplings in industrial buffer zones.
 - **Independent Earth Observation:** Copernicus **Sentinel-2 Level-2A NDVI [Obs 2024-10-10]** and IIT Bombay drone surveys verified only **13.5% actual canopy progress**.
-- **The Discrepancy:** A reporting overstatement of **+36.5 percentage points** was detected. Over 78% of saplings withered due to post-monsoon irrigation neglect and MIDC soil contamination.
+- **The Discrepancy:** A reporting overstatement of **+36.5 percentage points** was detected. Illustrative demonstration records indicate significant sapling loss occurred due to post-monsoon irrigation neglect and MIDC soil contamination.
 - **Action Taken:** Flagged as **POTENTIAL DISCREPANCY** under the Scientific Integrity Matrix, triggering automated contractor payment holds.`;
       }
       citations.push({ source: 'Copernicus Sentinel-2 Level-2A NDVI Index', type: 'Satellite Observation' });
@@ -178,9 +178,9 @@ Provide an evidence-grounded response with explicit source citations.`;
       citations.push({ source: 'Copernicus Sentinel-2 Radiometric Calibration Guide', type: 'Earth Observation Standard' });
       citations.push({ source: 'Scientific Integrity Protocol v2.4', type: 'Audit Matrix' });
     } else {
-      reply = `Regarding **${city.name}**, our deterministic audit engine continuously verifies the **${city.climateActionPlanName}** using independent Copernicus Sentinel-2 imagery and CPCB sensors.
+      reply = `Regarding **${city.name}**, our deterministic audit engine audits the **${city.climateActionPlanName}** using calibrated Copernicus Sentinel-2 Earth observation and CPCB sensor demonstration snapshots.
 - **Overall Verified Score:** 60.7% across pilot commitments.
-- **Average Overstatement:** Municipal reports run an average of +11.0% ahead of independent empirical data.
+- **Average Overstatement:** Municipal reports run an average of +11.0 percentage points ahead of independent empirical data.
 - **Integrity Rule:** Incomplete data is classified as INCONCLUSIVE, avoiding false accusations of failure.`;
       citations.push({ source: city.climateActionPlanName, type: 'Statutory Action Plan' });
       citations.push({ source: 'Deterministic Verification Matrix v2.4', type: 'Audit Engine' });
